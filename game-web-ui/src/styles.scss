@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import '~src/app/shared/styles/main.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body {
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  background-color: $white-bg;
+  color: $dark-font-color;
+}
+
+// general styles
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+:focus {
+  outline: none;
+}
+
+// helper classes
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  max-width: 100%;
+}

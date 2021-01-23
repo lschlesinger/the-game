@@ -13,7 +13,7 @@ import en from '@angular/common/locales/en';
 import {LandingComponent} from './pages/landing/landing.component';
 import {StartComponent} from './pages/start/start.component';
 import {GameComponent} from './pages/game/game.component';
-import {NzButtonModule} from "ng-zorro-antd/button";
+import {SharedModule} from './shared/shared.module';
 
 registerLocaleData(en);
 
@@ -30,7 +30,7 @@ registerLocaleData(en);
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        NzButtonModule
+        SharedModule,
     ],
     providers: [{provide: NZ_I18N, useValue: en_US}],
     bootstrap: [AppComponent]

@@ -1,0 +1,37 @@
+// main colors
+$primary: #58676e;
+$accent: #D9E2D9;
+$warn: #e15e63;
+
+// other colors
+$white-bg: #ffffff;
+$light-gray-bg: #e9eff4;
+$dark-gray-bg: #444a54;
+
+// font colors
+$light-font-color: $white-bg;
+$dark-font-color: $dark-gray-bg;
+
+// font weights
+$font-light: 300;
+$font-regular: 400;
+$font-bold: 600;
+
+// font-sizes
+$font-size-xsmall: 8px;
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-large: 20px;
+$font-size-xlarge: 36px;
+
+// sizes
+$unit-xs: 8px;
+$unit-sm: 16px;
+$unit-md: 24px;
+$unit-lg: 32px;
+$unit-xl: 40px;
+
+// components
+$default-card-width: 960px;
+$small-card-width: 600px;
+$top-nav-height: 64px;

@@ -1,0 +1,45 @@
+$text-sizes: 'xs' $font-size-xsmall,
+'sm' $font-size-small,
+'md' $font-size-medium,
+'lg' $font-size-large,
+'xl' $font-size-xlarge;
+
+@each $text-size, $text-size-value in $text-sizes {
+  .text-size- {
+    &-#{$text-size} {
+      font-size: $text-size-value !important;
+    }
+  }
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-justify {
+  text-align: justify !important;
+}
+
+.text-end {
+  text-align: end !important;
+}
+
+.italic {
+  font-style: italic !important;
+}
+
+.bold {
+  font-weight: $font-bold;
+}
