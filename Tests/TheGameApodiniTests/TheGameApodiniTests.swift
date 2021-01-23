@@ -26,7 +26,7 @@ final class TheGameApodiniTests: XCTestCase {
 
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output = String(data: data, encoding: .utf8)
-        
+
         XCTAssertEqual(output, "Hello, world!\n")
     }
 
@@ -43,6 +43,6 @@ final class TheGameApodiniTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }

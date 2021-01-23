@@ -5,9 +5,31 @@ import Apodini
 import Foundation
 
 struct Player: Content {
-    let id: UUID
-    let name: String? = nil
-    var hand: [Card] = []
+    typealias ID = String
+    let id: String
+    var name: String?
+    var hand: [Card]
+
+    init(name: String? = nil, hand: [Card] = []) {
+        self.id = UUID().uuidString
+        self.name = name
+        self.hand = hand
+    }
+}
+
+extension Player: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case hand
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
+        hand = try values.decode(Array<Card>.self, forKey: .hand)
+    }
 }
 
 extension Player: Validatable {
@@ -22,25 +44,12 @@ extension Player: Equatable {
     }
 }
 
-extension Player: LosslessStringConvertible {
-    var description: String {
-        self.id.uuidString
-    }
-    
-    init?(_ description: String) {
-        guard let uuid = UUID(uuidString: description) else {
-            return nil
-        }
-        self.id = uuid
-    }
-}
-
 extension Player {
     func hasOptions(on piles: [GamePile]) -> Bool {
         var result = false
         outer: for card in self.hand {
             for pile in piles {
-                if pile.validate(action: Action(player: self, gamePile: pile, card: card)) {
+                if pile.validate(action: Action(playerId: self.id, gamePileId: pile.id, card: card)) {
                     result = true
                     break outer
                 }

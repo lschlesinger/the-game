@@ -4,6 +4,6 @@
 
 import Apodini
 
-struct Card: Content {
+struct Card: Content, Decodable {
     let number: Int
 }

@@ -9,17 +9,16 @@ let package = Package(
         .macOS(.v10_15)
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .branch("develop")),
+        .package(url: "https://github.com/Apodini/Apodini.git", .branch("develop"))
     ],
     targets: [
         .target(
             name: "TheGameApodini",
             dependencies: [
-                .product(name: "Apodini", package: "Apodini"),
-                .product(name: "ApodiniDatabase", package: "Apodini")
+                .product(name: "Apodini", package: "Apodini")
             ]),
         .testTarget(
             name: "TheGameApodiniTests",
-            dependencies: ["TheGameApodini"]),
+            dependencies: ["TheGameApodini"])
     ]
 )

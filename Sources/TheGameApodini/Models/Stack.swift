@@ -21,12 +21,12 @@ struct Stack<T>: Stackable where T: Content {
     mutating func push(_ element: T) { storage.append(element) }
     mutating func pop() -> T? { storage.popLast() }
 }
-    
+
 extension Stack: ExpressibleByArrayLiteral {
     init(arrayLiteral elements: Self.Element...) {
         self.init(array: elements)
     }
-    
+
     init(array elements: [Self.Element]) {
         self.storage = elements
     }

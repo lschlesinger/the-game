@@ -3,12 +3,12 @@
 //
 
 import Apodini
-import ApodiniDatabase
 
 struct PlayerComponent: Component {
     var content: some Component {
         Group("player") {
-            Create<Player>()
+            CreatePlayer()
+                .operation(.create)
         }
     }
 }

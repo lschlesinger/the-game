@@ -5,23 +5,24 @@ import Foundation
 import Apodini
 
 protocol Pile: Content {
-    var id: UUID { get set }
+    typealias ID = String
+    var id: ID { get set }
     var stack: Stack<Card> { get set }
 }
 
 struct GamePile: Pile {
-    var id: UUID
+    var id: ID
     var stack: Stack<Card>
-    
+
     enum Order: String, Encodable {
         case asc
         case desc
     }
-    
+
     let order: Order
-    
+
     init(order: Order) {
-        self.id = UUID()
+        self.id = UUID().uuidString
         self.stack = Stack<Card>()
         self.order = order
     }
@@ -47,27 +48,27 @@ extension GamePile: Validatable {
         }
         return valid
     }
-    
-    
 }
 
 struct DrawPile: Pile {
-    var id: UUID
+    var id: ID
     var stack: Stack<Card>
     var isEmpty: Bool {
         stack.isEmpty
     }
-    
+
     init() {
-        self.id = UUID()
+        self.id = UUID().uuidString
         self.stack = Stack<Card>(array: (2...99).map { Card(number: $0) })
     }
 }
 
 extension DrawPile {
     mutating func draw(_ amount: Int) -> [Card] {
+        // we shuffle before drawing to prevent inspection of the draw pile of some kind
+        self.shuffle()
         var cards: [Card] = []
-        for _ in 0...amount {
+        for _ in 0..<amount {
             guard let card = self.stack.pop() else {
                 break
             }
