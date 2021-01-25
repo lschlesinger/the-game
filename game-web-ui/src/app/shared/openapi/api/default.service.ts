@@ -18,8 +18,10 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { Action } from '../model/action';
-import { Game } from '../model/game';
-import { Player } from '../model/player';
+import { GameResponse } from '../model/gameResponse';
+import { GameResponse1 } from '../model/gameResponse1';
+import { GameResponse2 } from '../model/gameResponse2';
+import { PlayerResponse } from '../model/playerResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -28,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class DefaultService {
 
-    protected basePath = '127.0.0.1:8080';
+    protected basePath = '';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -64,13 +66,13 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1GameGameIdGet(gameId: string, observe?: 'body', reportProgress?: boolean): Observable<Game>;
-    public v1GameGameIdGet(gameId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Game>>;
-    public v1GameGameIdGet(gameId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Game>>;
-    public v1GameGameIdGet(gameId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public gETGetGame(gameId: string, observe?: 'body', reportProgress?: boolean): Observable<GameResponse1>;
+    public gETGetGame(gameId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse1>>;
+    public gETGetGame(gameId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse1>>;
+    public gETGetGame(gameId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (gameId === null || gameId === undefined) {
-            throw new Error('Required parameter gameId was null or undefined when calling v1GameGameIdGet.');
+            throw new Error('Required parameter gameId was null or undefined when calling gETGetGame.');
         }
 
         let headers = this.defaultHeaders;
@@ -88,8 +90,132 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Game>('get',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}`,
+        return this.httpClient.request<GameResponse1>('get',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}`,
             {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * GetGames
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public gETGetGames(observe?: 'body', reportProgress?: boolean): Observable<GameResponse2>;
+    public gETGetGames(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse2>>;
+    public gETGetGames(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse2>>;
+    public gETGetGames(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<GameResponse2>('get',`${this.basePath}/v1/game`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * CreateGame
+     * @param name @Parameter var name: String
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public pOSTCreateGame(name?: string, observe?: 'body', reportProgress?: boolean): Observable<GameResponse1>;
+    public pOSTCreateGame(name?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse1>>;
+    public pOSTCreateGame(name?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse1>>;
+    public pOSTCreateGame(name?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (name !== undefined && name !== null) {
+            queryParameters = queryParameters.set('name', <any>name);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<GameResponse1>('post',`${this.basePath}/v1/game`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * CreatePlayer
+     * @param name @Parameter var name: String
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public pOSTCreatePlayer(name?: string, observe?: 'body', reportProgress?: boolean): Observable<PlayerResponse>;
+    public pOSTCreatePlayer(name?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PlayerResponse>>;
+    public pOSTCreatePlayer(name?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PlayerResponse>>;
+    public pOSTCreatePlayer(name?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (name !== undefined && name !== null) {
+            queryParameters = queryParameters.set('name', <any>name);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<PlayerResponse>('post',`${this.basePath}/v1/player`,
+            {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -106,13 +232,13 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1GameGameIdJoinPut(gameId: string, playerId?: string, observe?: 'body', reportProgress?: boolean): Observable<Game>;
-    public v1GameGameIdJoinPut(gameId: string, playerId?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Game>>;
-    public v1GameGameIdJoinPut(gameId: string, playerId?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Game>>;
-    public v1GameGameIdJoinPut(gameId: string, playerId?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pUTJoinGame(gameId: string, playerId?: string, observe?: 'body', reportProgress?: boolean): Observable<GameResponse>;
+    public pUTJoinGame(gameId: string, playerId?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse>>;
+    public pUTJoinGame(gameId: string, playerId?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse>>;
+    public pUTJoinGame(gameId: string, playerId?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (gameId === null || gameId === undefined) {
-            throw new Error('Required parameter gameId was null or undefined when calling v1GameGameIdJoinPut.');
+            throw new Error('Required parameter gameId was null or undefined when calling pUTJoinGame.');
         }
 
 
@@ -136,7 +262,7 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Game>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/join`,
+        return this.httpClient.request<GameResponse>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/join`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -154,13 +280,13 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1GameGameIdPassPut(gameId: string, observe?: 'body', reportProgress?: boolean): Observable<Game>;
-    public v1GameGameIdPassPut(gameId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Game>>;
-    public v1GameGameIdPassPut(gameId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Game>>;
-    public v1GameGameIdPassPut(gameId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pUTPassGame(gameId: string, observe?: 'body', reportProgress?: boolean): Observable<GameResponse>;
+    public pUTPassGame(gameId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse>>;
+    public pUTPassGame(gameId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse>>;
+    public pUTPassGame(gameId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (gameId === null || gameId === undefined) {
-            throw new Error('Required parameter gameId was null or undefined when calling v1GameGameIdPassPut.');
+            throw new Error('Required parameter gameId was null or undefined when calling pUTPassGame.');
         }
 
         let headers = this.defaultHeaders;
@@ -178,7 +304,7 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Game>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/pass`,
+        return this.httpClient.request<GameResponse>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/pass`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -196,13 +322,13 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1GameGameIdPlayPut(gameId: string, body?: Action, observe?: 'body', reportProgress?: boolean): Observable<Game>;
-    public v1GameGameIdPlayPut(gameId: string, body?: Action, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Game>>;
-    public v1GameGameIdPlayPut(gameId: string, body?: Action, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Game>>;
-    public v1GameGameIdPlayPut(gameId: string, body?: Action, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pUTPlayGame(gameId: string, body?: Action, observe?: 'body', reportProgress?: boolean): Observable<GameResponse>;
+    public pUTPlayGame(gameId: string, body?: Action, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse>>;
+    public pUTPlayGame(gameId: string, body?: Action, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse>>;
+    public pUTPlayGame(gameId: string, body?: Action, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (gameId === null || gameId === undefined) {
-            throw new Error('Required parameter gameId was null or undefined when calling v1GameGameIdPlayPut.');
+            throw new Error('Required parameter gameId was null or undefined when calling pUTPlayGame.');
         }
 
 
@@ -226,7 +352,7 @@ export class DefaultService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Game>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/play`,
+        return this.httpClient.request<GameResponse>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/play`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -244,13 +370,13 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1GameGameIdStartPut(gameId: string, observe?: 'body', reportProgress?: boolean): Observable<Game>;
-    public v1GameGameIdStartPut(gameId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Game>>;
-    public v1GameGameIdStartPut(gameId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Game>>;
-    public v1GameGameIdStartPut(gameId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pUTStartGame(gameId: string, observe?: 'body', reportProgress?: boolean): Observable<GameResponse>;
+    public pUTStartGame(gameId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse>>;
+    public pUTStartGame(gameId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse>>;
+    public pUTStartGame(gameId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (gameId === null || gameId === undefined) {
-            throw new Error('Required parameter gameId was null or undefined when calling v1GameGameIdStartPut.');
+            throw new Error('Required parameter gameId was null or undefined when calling pUTStartGame.');
         }
 
         let headers = this.defaultHeaders;
@@ -268,132 +394,8 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Game>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/start`,
+        return this.httpClient.request<GameResponse>('put',`${this.basePath}/v1/game/${encodeURIComponent(String(gameId))}/start`,
             {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * GetGames
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public v1GameGet(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: Game; }>;
-    public v1GameGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: Game; }>>;
-    public v1GameGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: Game; }>>;
-    public v1GameGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<{ [key: string]: Game; }>('get',`${this.basePath}/v1/game`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * CreateGame
-     * @param name @Parameter var name: String
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public v1GamePost(name?: string, observe?: 'body', reportProgress?: boolean): Observable<Game>;
-    public v1GamePost(name?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Game>>;
-    public v1GamePost(name?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Game>>;
-    public v1GamePost(name?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (name !== undefined && name !== null) {
-            queryParameters = queryParameters.set('name', <any>name);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Game>('post',`${this.basePath}/v1/game`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * CreatePlayer
-     * @param name @Parameter var name: String
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public v1PlayerPost(name?: string, observe?: 'body', reportProgress?: boolean): Observable<Player>;
-    public v1PlayerPost(name?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Player>>;
-    public v1PlayerPost(name?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Player>>;
-    public v1PlayerPost(name?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (name !== undefined && name !== null) {
-            queryParameters = queryParameters.set('name', <any>name);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Player>('post',`${this.basePath}/v1/player`,
-            {
-                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
+## Generate Typescript OpenAPI client SDK for Angular
+
+```shell
+brew install swagger-codegen
+swagger-codegen generate -i ./openapi.json -l typescript-angular -o ./src/app/shared/openapi --additional-properties ngVersion=11.1.0
+sed -i '' 's/: ModuleWithProviders/: ModuleWithProviders\<ApiModule\>/g' src/app/shared/openapi/api.module.ts
+sed -i '' 's/http\:\/\/127.0.0.1\:8080//g' src/app/shared/openapi/api/default.service.ts
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

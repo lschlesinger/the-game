@@ -9,17 +9,19 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Action } from './action';
 import { DrawPile } from './drawPile';
+import { GamePile } from './gamePile';
 import { Player } from './player';
 
 export interface Game { 
     status: Game.StatusEnum;
     result: Game.ResultEnum;
-    gamePiles: Array;
+    gamePiles: Array<GamePile>;
     id: string;
-    currentActions: Array;
+    currentActions: Array<Action>;
     players: { [key: string]: Player; };
-    currentPlayerId: any;
+    currentPlayerId?: string;
     name: string;
     drawPile: DrawPile;
 }

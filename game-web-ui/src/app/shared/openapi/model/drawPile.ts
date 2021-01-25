@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Stack } from './stack';
+import { StackofCard } from './stackofCard';
 
 export interface DrawPile { 
+    stack: StackofCard;
     id: string;
-    stack: Stack;
 }

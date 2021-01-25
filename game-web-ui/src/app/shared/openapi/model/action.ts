@@ -12,7 +12,7 @@
 import { Card } from './card';
 
 export interface Action { 
-    playerId: string;
-    card: Card;
     gamePileId: string;
+    card: Card;
+    playerId: string;
 }

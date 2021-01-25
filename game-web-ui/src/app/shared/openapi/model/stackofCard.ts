@@ -9,17 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { StackofCard } from './stackofCard';
+import { Card } from './card';
 
-export interface GamePile { 
-    order: GamePile.OrderEnum;
-    stack: StackofCard;
-    id: string;
-}
-export namespace GamePile {
-    export type OrderEnum = 'asc' | 'desc';
-    export const OrderEnum = {
-        Asc: 'asc' as OrderEnum,
-        Desc: 'desc' as OrderEnum
-    };
+export interface StackofCard { 
+    storage: Array<Card>;
 }

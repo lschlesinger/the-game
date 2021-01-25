@@ -1,1 +1,16 @@
-<button nz-button>test</button>
+<div class="landing__container">
+    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input formControlName="userName" nz-input placeholder="Username"/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control>
+                <button nz-button nzType="primary" [disabled]="!validateForm.valid">Start</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
