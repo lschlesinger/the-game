@@ -4,8 +4,6 @@ export * from './drawPile';
 export * from './game';
 export * from './gamePile';
 export * from './gameResponse';
-export * from './gameResponse1';
-export * from './gameResponse2';
 export * from './player';
 export * from './playerResponse';
 export * from './stackofCard';

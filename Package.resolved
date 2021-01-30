@@ -23,8 +23,8 @@
         "package": "Apodini",
         "repositoryURL": "https://github.com/Apodini/Apodini.git",
         "state": {
-          "branch": "develop",
-          "revision": "d7aa975c7812abcab845a03e4c29d2f4aaee86df",
+          "branch": "enhancement/refine-oas",
+          "revision": "464206c74cf59e89e5e5be5cf48fcd5422dace51",
           "version": null
         }
       },

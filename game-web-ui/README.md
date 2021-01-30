@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ```shell
 brew install swagger-codegen
-swagger-codegen generate -i ./openapi.json -l typescript-angular -o ./src/app/shared/openapi --additional-properties ngVersion=11.1.0
+swagger-codegen generate -i http://127.0.0.1:8080/openapi -l typescript-angular -o ./src/app/shared/openapi --additional-properties ngVersion=11.1.0
 sed -i '' 's/: ModuleWithProviders/: ModuleWithProviders\<ApiModule\>/g' src/app/shared/openapi/api.module.ts
 sed -i '' 's/http\:\/\/127.0.0.1\:8080//g' src/app/shared/openapi/api/default.service.ts
 ```
