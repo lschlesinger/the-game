@@ -3,7 +3,7 @@
 //
 
 import Apodini
-import Foundation
+import TheGameApodiniLibrary
 
 struct PlayGame: Handler {
     @Throws(.notFound)

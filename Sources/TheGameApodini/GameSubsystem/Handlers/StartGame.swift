@@ -2,8 +2,8 @@
 //  Created by Lorena Schlesinger on 23.01.21.
 //
 
+import TheGameApodiniLibrary
 import Apodini
-import Foundation
 
 struct StartGame: Handler {
     @Throws(.notFound)

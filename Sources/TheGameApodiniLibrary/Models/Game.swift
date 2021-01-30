@@ -5,14 +5,16 @@
 import Foundation
 import Apodini
 
-private let HANDSIZE_TWO_PLAYERS = 7
-private let HANDSIZE_DEFAULT = 6
-private let MAX_PLAYERS = 5
-private let MIN_PLAYERS = 2
+enum GameDefaults {
+    static let handSizeTwoPlayers = 7
+    static let handSizeDefault = 6
+    static let maxPlayers = 5
+    static let minPlayers = 2
+}
 
 /// The main game class.
-struct Game: Content {
-    let id: String
+public struct Game: Content {
+    public let id: String
 
     /// Custom name for game.
     let name: String
@@ -53,13 +55,13 @@ struct Game: Content {
 
     /// Amount of cards for a player's hand.
     var handSize: Int {
-        players.count == MIN_PLAYERS ? HANDSIZE_TWO_PLAYERS : HANDSIZE_DEFAULT
+        players.count == GameDefaults.minPlayers ? GameDefaults.handSizeTwoPlayers : GameDefaults.handSizeDefault
     }
 }
 
 // MARK: Game setup.
-extension Game {
-    public init(name: String) {
+public extension Game {
+    init(name: String) {
         self.id = UUID().uuidString
         self.name = name
         self.drawPile = DrawPile()
@@ -83,9 +85,9 @@ extension Game {
 
 // MARK: Game initialization.
 extension Game {
-    mutating func start() throws {
-        // 0.1 Check for at least MIN_PLAYERS, at most MAX_PLAYERS players.
-        guard (MIN_PLAYERS...MAX_PLAYERS).contains(players.count) else {
+    public mutating func start() throws {
+        // 0.1 Check for at least GameDefaults.minPlayers, at most GameDefaults.maxPlayers players.
+        guard (GameDefaults.minPlayers...GameDefaults.maxPlayers).contains(players.count) else {
             throw GameError("Invalid player count: \(players.count).")
         }
 
@@ -119,7 +121,7 @@ extension Game {
 // MARK: Game actions.
 extension Game {
     /// Plays an action of the current player.
-    mutating func play(action: Action) throws {
+    public mutating func play(action: Action) throws {
         // 0. check if player is currentPlayer
         guard action.playerId == currentPlayerId && players[action.playerId] != nil else {
             throw GameError("It's not your turn dude.")
@@ -129,7 +131,7 @@ extension Game {
     }
 
     /// Pass on to the next player in row, if allowed.
-    mutating func pass() throws {
+    public mutating func pass() throws {
         guard let playerId = currentPlayerId, var player = players[playerId] else {
             throw GameError("Current player couldn't be identified.")
         }

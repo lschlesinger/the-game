@@ -3,7 +3,7 @@
 //
 
 import Apodini
-import Foundation
+import TheGameApodiniLibrary
 
 struct GetGames: Handler {
 

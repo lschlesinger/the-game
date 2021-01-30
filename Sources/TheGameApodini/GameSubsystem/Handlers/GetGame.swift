@@ -3,9 +3,10 @@
 //
 
 import Apodini
-import Foundation
+import TheGameApodiniLibrary
 
 struct GetGame: Handler {
+    
     @Throws(.notFound)
     var notFound: ApodiniError
 

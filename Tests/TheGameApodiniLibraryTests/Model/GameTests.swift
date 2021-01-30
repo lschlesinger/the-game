@@ -3,11 +3,10 @@
 //
 
 import XCTest
-import TheGameApodini
-import Foundation
+@testable import TheGameApodiniLibrary
 
 final class GameTests: XCTestCase {
     func testStart() throws {
-        // let player = Player(id: UUID())
+        let player = Player(name: "hi")
     }
 }

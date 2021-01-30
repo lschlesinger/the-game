@@ -4,13 +4,13 @@
 import Apodini
 import Foundation
 
-struct Player: Content {
+public struct Player: Content {
     typealias ID = String
-    let id: String
+    public let id: String
     var name: String?
     var hand: [Card]
 
-    init(name: String? = nil, hand: [Card] = []) {
+    public init(name: String? = nil, hand: [Card] = []) {
         self.id = UUID().uuidString
         self.name = name
         self.hand = hand
@@ -24,7 +24,7 @@ extension Player: Decodable {
         case hand
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)

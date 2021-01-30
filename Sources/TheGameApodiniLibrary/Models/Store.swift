@@ -2,8 +2,6 @@
 //  Created by Lorena Schlesinger on 23.01.21.
 //
 
-import Foundation
-
 protocol InMemoryStore {
     associatedtype Element
     static var instance: Self { get set }
@@ -12,19 +10,19 @@ protocol InMemoryStore {
 }
 
 /// Simple in-memory store for keeping track of games.
-struct GameStore: InMemoryStore {
+public struct GameStore: InMemoryStore {
     typealias Element = Game
 
-    static var instance = GameStore()
+    public static var instance = GameStore()
 
-    var elements: [String: Game] = [:]
+    public var elements: [String: Game] = [:]
 }
 
 /// Simple in-memory store for keeping track of games.
-struct PlayerStore: InMemoryStore {
+public struct PlayerStore: InMemoryStore {
     typealias Element = Player
 
-    static var instance = PlayerStore()
+    public static var instance = PlayerStore()
 
-    var elements: [String: Player] = [:]
+    public var elements: [String: Player] = [:]
 }
