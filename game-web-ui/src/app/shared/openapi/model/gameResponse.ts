@@ -13,5 +13,5 @@ import { Game } from './game';
 
 export interface GameResponse { 
     links: { [key: string]: string; };
-    data: { [key: string]: Game; };
+    data: Game;
 }

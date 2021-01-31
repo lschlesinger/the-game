@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {PlayerService} from "./shared/services/player.service";
+import {PlayerService} from './shared/services/player.service';
 
 @Component({
     selector: 'app-root',
@@ -8,6 +8,6 @@ import {PlayerService} from "./shared/services/player.service";
 })
 export class AppComponent {
 
-    constructor(private userService: PlayerService) {
+    constructor() {
     }
 }

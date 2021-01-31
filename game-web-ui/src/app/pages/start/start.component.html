@@ -1,1 +1,91 @@
-<p>start works!</p>
+<div class="start__container"
+     nz-row
+     nzJustify="center"
+     nzAlign="middle">
+    <div class="start__content"
+         nz-col>
+        <div class="start__create-game-form"
+             nz-row
+             nzJustify="center"
+             nzAlign="middle">
+            <form nz-form
+                  [nzLayout]="'inline'"
+                  [formGroup]="validateForm"
+                  (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input your game name!">
+                        <nz-input-group nzPrefixIcon="dribbble">
+                            <input formControlName="gameName"
+                                   nz-input
+                                   placeholder="Game name"/>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                        <button
+                                nz-button
+                                nzType="primary"
+                                [disabled]="!validateForm.valid">Create
+                        </button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+        <div class="start__game-table">
+            <nz-table #nzTable
+                      [nzData]="listOfDisplayData"
+                      nzTableLayout="fixed">
+                <thead>
+                <tr>
+                    <th nzCustomFilter>
+                        Name
+                        <nz-filter-trigger
+                                [(nzVisible)]="visible"
+                                [nzActive]="searchValue.length > 0"
+                                [nzDropdownMenu]="menu">
+                            <i nz-icon
+                               nzType="search"></i>
+                        </nz-filter-trigger>
+                    </th>
+                    <th>Players</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of nzTable.data">
+                    <td>{{ data.name }}</td>
+                    <td>{{ (data.players | keyvalue).length }}</td>
+                    <td>{{ data.status }}</td>
+                    <td><a (click)="joinGame(data.id)">Join</a></td>
+                </tr>
+                </tbody>
+            </nz-table>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <div class="ant-table-filter-dropdown">
+                    <div class="start__search-box">
+                        <input type="text"
+                               nz-input
+                               placeholder="Search name"
+                               [(ngModel)]="searchValue"/>
+                        <button
+                                nz-button
+                                nzSize="small"
+                                nzType="primary"
+                                (click)="search()"
+                                class="start__search-button">
+                            Search
+                        </button>
+                        <button
+                                nz-button
+                                nzSize="small"
+                                (click)="reset()">Reset
+                        </button>
+                    </div>
+                </div>
+            </nz-dropdown-menu>
+        </div>
+    </div>
+
+</div>

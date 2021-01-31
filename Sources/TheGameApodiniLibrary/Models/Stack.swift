@@ -15,7 +15,7 @@ extension Stackable {
     var isEmpty: Bool { peek() == nil }
 }
 
-struct Stack<T>: Stackable where T: Content {
+struct Stack<T>: Stackable, Content where T: Content {
     var storage: [T] = [T]()
     func peek() -> T? { storage.last }
     mutating func push(_ element: T) { storage.append(element) }
@@ -32,8 +32,3 @@ extension Stack: ExpressibleByArrayLiteral {
     }
 }
 
-extension Stack: Content {
-    public func encode(to encoder: Encoder) throws {
-        try self.storage.encode(to: encoder)
-    }
-}

@@ -1,5 +1,6 @@
 export * from './action';
 export * from './card';
+export * from './dictionaryofGameResponse';
 export * from './drawPile';
 export * from './game';
 export * from './gamePile';

@@ -1,0 +1,31 @@
+@import "~src/app/shared/styles/main";
+
+.start__container {
+  width: 100%;
+  height: 100%;
+}
+
+.start__content {
+  width: 960px;
+  max-width: 100%;
+}
+
+$search-box-input-width: 188px;
+$search-box-button-width: 90px;
+.start__search-box {
+  padding: $unit-sm;
+
+  input {
+    width: $search-box-input-width;
+    margin-bottom: $unit-sm;
+    display: block;
+  }
+
+  button {
+    width: $search-box-button-width;
+  }
+}
+
+.start__search-button {
+  margin-right: $unit-sm;
+}

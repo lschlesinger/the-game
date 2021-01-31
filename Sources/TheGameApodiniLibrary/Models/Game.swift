@@ -45,7 +45,7 @@ public struct Game: Content {
     var result: Result
 
     /// Associated players, i.e. "the team", key is player ID.
-    var players: [String: Player]
+    public var players: [String: Player]
 
     /// Player whose turn it is.
     var currentPlayerId: Player.ID?
@@ -100,10 +100,10 @@ extension Game {
         distributeCards()
 
         // 2. Randomly pick start player
-        self.currentPlayerId = players.randomElement()?.value.id
+        currentPlayerId = players.randomElement()?.value.id
 
         // 3. Change Status
-        self.status = .running
+        status = .running
 
         // TODO: 5. Emit to subscribers
 

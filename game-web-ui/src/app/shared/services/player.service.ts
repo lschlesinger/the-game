@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, ReplaySubject} from "rxjs";
-import {DefaultService, Player} from "../openapi";
+import {Observable, ReplaySubject} from 'rxjs';
+import {DefaultService, Player} from '../openapi';
+import {map} from 'rxjs/operators';
+
+const PLAYER_KEY = 'the-game-player';
 
 @Injectable()
 export class PlayerService {
@@ -8,12 +11,34 @@ export class PlayerService {
     private player$: ReplaySubject<Player> = new ReplaySubject<Player>(1);
 
     constructor(private apiService: DefaultService) {
-
+        this.getPlayerFromStorage();
     }
 
-    public createPlayer(name: string): void {
-        this.apiService.pOSTCreatePlayer(name).subscribe((res) => {
-            console.log('yeah', res.data);
-        });
+    public get player(): Observable<Player> {
+        return this.player$;
+    }
+
+    public createPlayer(name: string): Observable<Player> {
+        return this.apiService.createPlayer(name)
+            .pipe(
+                map((playerResponse) => {
+                    this.setPlayerInStorage(playerResponse.data);
+                    return playerResponse.data;
+                }));
+    }
+
+    private getPlayerFromStorage(): void {
+        const value: string = localStorage.getItem(PLAYER_KEY);
+        console.log(value);
+        if (value) {
+            this.player$.next(JSON.parse(value));
+        } else {
+            this.player$.next(null);
+        }
+    }
+
+    private setPlayerInStorage(player: Player): void {
+        localStorage.setItem(PLAYER_KEY, JSON.stringify(player));
+        this.player$.next(player);
     }
 }

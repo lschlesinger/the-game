@@ -1,5 +1,12 @@
-<div class="landing__container">
-    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<div class="landing__container"
+     nz-row
+     nzJustify="center"
+     nzAlign="middle"
+>
+    <form nz-form
+          [nzLayout]="'inline'"
+          [formGroup]="validateForm"
+          (ngSubmit)="submitForm()">
         <nz-form-item>
             <nz-form-control nzErrorTip="Please input your username!">
                 <nz-input-group nzPrefixIcon="user">

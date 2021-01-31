@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { Action } from '../model/action';
+import { DictionaryofGameResponse } from '../model/dictionaryofGameResponse';
 import { GameResponse } from '../model/gameResponse';
 import { PlayerResponse } from '../model/playerResponse';
 
@@ -192,9 +193,9 @@ export class DefaultService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getGames(observe?: 'body', reportProgress?: boolean): Observable<GameResponse>;
-    public getGames(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GameResponse>>;
-    public getGames(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GameResponse>>;
+    public getGames(observe?: 'body', reportProgress?: boolean): Observable<DictionaryofGameResponse>;
+    public getGames(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<DictionaryofGameResponse>>;
+    public getGames(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<DictionaryofGameResponse>>;
     public getGames(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -212,7 +213,7 @@ export class DefaultService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<GameResponse>('get',`${this.basePath}/v1/game`,
+        return this.httpClient.request<DictionaryofGameResponse>('get',`${this.basePath}/v1/game`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

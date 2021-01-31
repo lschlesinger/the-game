@@ -13,8 +13,8 @@ import { StackofCard } from './stackofCard';
 
 export interface GamePile { 
     id: string;
-    order: GamePile.OrderEnum;
     stack: StackofCard;
+    order: GamePile.OrderEnum;
 }
 export namespace GamePile {
     export type OrderEnum = 'asc' | 'desc';

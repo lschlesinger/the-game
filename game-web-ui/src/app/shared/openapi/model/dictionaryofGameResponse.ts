@@ -9,10 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Card } from './card';
+import { Game } from './game';
 
-export interface Player { 
-    name?: string;
-    id: string;
-    hand: Array<Card>;
+export interface DictionaryofGameResponse { 
+    links: { [key: string]: string; };
+    data: { [key: string]: Game; };
 }

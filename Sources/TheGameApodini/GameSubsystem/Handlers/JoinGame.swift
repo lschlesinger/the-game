@@ -22,8 +22,10 @@ struct JoinGame: Handler {
         guard var game = GameStore.instance.elements[gameId] else {
             throw notFound(description: "Game not found.")
         }
-        game.add(player)
-        GameStore.instance.elements[gameId] = game
+        if game.players[playerId] == nil {
+            game.add(player)
+            GameStore.instance.elements[gameId] = game
+        }
         return game
     }
 }

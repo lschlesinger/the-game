@@ -1,1 +1,81 @@
-<p>game works!</p>
+<div class="game__container"
+     *ngIf="game && player"
+     nz-row
+     nzAlign="middle">
+    <div class="game__content"
+         nzFlex="auto"
+         nz-col>
+        <div class="game__info-bar"
+             nz-row>
+            {{game.name}}
+            <button nz-button (click)="startGame()"
+                    *ngIf="game.status === 'open'">Start
+            </button>
+            <button nz-button (click)="passAction()"
+                    *ngIf="checkForPlayersTurn()">Pass
+            </button>
+        </div>
+        <nz-divider></nz-divider>
+        <div nz-row
+             class="game__area">
+            <div class="game__area-asc"
+                 nzFlex="auto"
+                 nz-col>
+                Ascending: 1 to 100
+                <div *ngFor="let pile of getPiles('asc'); let i = index"
+                     (click)="selectPileForAction(pile)"
+                     class="game__card">
+                    <img src="{{ ('1-' + (i+1) ) | card }}"
+                         *ngIf="!pile.stack.storage || pile.stack.storage?.length === 0"
+                         width="100%"
+                         height="100%">
+                    <img src="{{ pile.stack.storage[pile.stack.storage.length-1].number | card }}"
+                         *ngIf="pile.stack.storage?.length > 0"
+                         width="100%"
+                         height="100%">
+                </div>
+            </div>
+            <div class="game__area-draw"
+                 nzFlex="auto"
+                 nz-col>
+                {{game.drawPile.stack.storage.length}} more card(s) to play!
+                <div class="game__card">
+                    The Game
+                </div>
+            </div>
+            <div class="game__area-desc"
+                 nzFlex="auto"
+                 nz-col>
+                Descending: 100 to 1
+                <div *ngFor="let pile of getPiles('desc'); let i = index"
+                     (click)="selectPileForAction(pile)"
+                     class="game__card">
+                    <img src="{{ ('100-' + (i+1) ) | card }}"
+                         *ngIf="!pile.stack.storage || pile.stack.storage?.length === 0"
+                         width="100%"
+                         height="100%">
+                    <img src="{{ pile.stack.storage[pile.stack.storage.length-1].number | card }}"
+                         *ngIf="pile.stack.storage?.length > 0"
+                         width="100%"
+                         height="100%">
+                </div>
+            </div>
+        </div>
+        <nz-divider></nz-divider>
+        <div nz-row
+             class="game__hand">
+            <div *ngFor="let card of getHand()"
+                 (click)="selectCardForAction(card)"
+                 class="game__card">
+                <img src="{{ card.number | card }}"
+                     [class.game__card--selected]="currentAction?.card?.number === card?.number"
+                     width="100%"
+                     height="100%">
+            </div>
+        </div>
+    </div>
+    <div class="game__players"
+         nz-col>
+        {{(game.players | keyvalue).length}}
+    </div>
+</div>
