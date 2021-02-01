@@ -3,7 +3,7 @@
 <br />
 
 <p align="center">
-  <a href="https://github.com/lschlesinger/fairbundled">
+  <a href="https://github.com/lschlesinger/the-game">
     <img src="game-web-ui/src/assets/images/logo.png" alt="Logo" width="500">
   </a>
 
@@ -24,7 +24,7 @@
   * [Mission](#mission)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-* [Project Status](#project-status)
+* [Critical Reflection of the Software](#critical-reflection)
 * [License](#license)
 
 <!-- ABOUT THE PROJECT -->
@@ -54,9 +54,9 @@ Regarding acknowledgement, find more information [here](./docs/Acknowledgement.m
 ## Getting Started
 
 ...
-<!-- Critical Reflection -->
+<!-- CRITICAL REFLECTION -->
 
-## Critical Reflection of ohe Software
+## Critical Reflection of the Software
 
 
 <!-- LICENSE -->
