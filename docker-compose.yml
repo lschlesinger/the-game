@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: the-game-backend:latest
+    ports:
+      - 8080:8080
+  nginx:
+    build:
+      context: game-web-ui
+      dockerfile: Dockerfile
+    image: the-game-frontend:latest
+    ports:
+      - 80:80

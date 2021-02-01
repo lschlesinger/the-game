@@ -23,8 +23,8 @@
         "package": "Apodini",
         "repositoryURL": "https://github.com/Apodini/Apodini.git",
         "state": {
-          "branch": "enhancement/refine-oas",
-          "revision": "1cc924175dff00ebfca2cba51244d24b3963854e",
+          "branch": "develop",
+          "revision": "338ea6614b75d72096dd77459a7c31419835a4d4",
           "version": null
         }
       },
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git",
         "state": {
           "branch": null,
-          "revision": "db08ad5e0dfca1599749facfa5e7db86366e4222",
-          "version": "0.2.2"
+          "revision": "d861e6dd41ad0c1096a9a730611fa6a8cc307b0c",
+          "version": "0.3.1"
         }
       },
       {
@@ -393,8 +393,8 @@
         "repositoryURL": "https://github.com/vapor/vapor.git",
         "state": {
           "branch": null,
-          "revision": "967c2d1f9c473dbb3a5ef8f2e2901f56e21ae79a",
-          "version": "4.38.0"
+          "revision": "bb87dcff4cf6d86d386308b4cb1393cefa4891a4",
+          "version": "4.39.2"
         }
       },
       {
