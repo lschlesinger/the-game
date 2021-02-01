@@ -1,31 +1,39 @@
-import {Component, OnInit} from '@angular/core';
-import {Game} from '../../shared/openapi';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Game, Player} from '../../shared/openapi';
 import {GameService} from '../../shared/services/game.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {PlayerService} from '../../shared/services/player.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-start',
     templateUrl: './start.component.html',
     styleUrls: ['./start.component.scss']
 })
-export class StartComponent implements OnInit {
+export class StartComponent implements OnInit, OnDestroy {
 
     searchValue = '';
     visible = false;
 
     games: Game[];
-
+    currentPlayer: Player;
     listOfDisplayData: Game[];
     validateForm!: FormGroup;
+    private playerSub: Subscription;
 
     constructor(private fb: FormBuilder,
                 private router: Router,
-                private gameService: GameService) {
-        this.validateForm = this.fb.group({
-            gameName: [null, [Validators.required]]
-        });
+                private gameService: GameService,
+                private playerService: PlayerService
+    ) {
         this.updateGames();
+        this.playerSub = this.playerService.player
+            .subscribe(
+                (player) => {
+                    this.currentPlayer = player;
+                }
+            );
     }
 
     ngOnInit(): void {
@@ -65,6 +73,10 @@ export class StartComponent implements OnInit {
             });
     }
 
+    ngOnDestroy(): void {
+        this.playerSub.unsubscribe();
+    }
+
     private updateGames(): void {
         this.gameService.getGames()
             .subscribe((games) => {
@@ -72,4 +84,6 @@ export class StartComponent implements OnInit {
                 this.listOfDisplayData = [...this.games];
             });
     }
+
+
 }

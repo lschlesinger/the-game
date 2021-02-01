@@ -1,7 +1,8 @@
 <div class="start__container"
      nz-row
      nzJustify="center"
-     nzAlign="middle">
+     nzAlign="middle"
+     *ngIf="currentPlayer">
     <div class="start__content"
          nz-col>
         <div class="start__create-game-form"
@@ -14,7 +15,7 @@
                   (ngSubmit)="submitForm()">
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Please input your game name!">
-                        <nz-input-group nzPrefixIcon="dribbble">
+                        <nz-input-group nzPrefixIcon="notification">
                             <input formControlName="gameName"
                                    nz-input
                                    placeholder="Game name"/>
@@ -58,7 +59,10 @@
                     <td>{{ data.name }}</td>
                     <td>{{ (data.players | keyvalue).length }}</td>
                     <td>{{ data.status }}</td>
-                    <td><a (click)="joinGame(data.id)">Join</a></td>
+                    <td>
+                        <a *ngIf="!data.players[currentPlayer.id]" (click)="joinGame(data.id)">Join</a>
+                        <a *ngIf="data.players[currentPlayer.id]" routerLink="/game/{{data.id}}">Re-Enter</a>
+                    </td>
                 </tr>
                 </tbody>
             </nz-table>

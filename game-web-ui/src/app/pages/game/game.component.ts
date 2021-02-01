@@ -16,6 +16,7 @@ export class GameComponent implements OnInit, OnDestroy {
     gameId: string;
     game: Game;
     player: Player;
+    players: Player[];
     currentAction: Action;
 
     private routeSub: Subscription;
@@ -122,5 +123,20 @@ export class GameComponent implements OnInit, OnDestroy {
             card: null,
             playerId: this.player.id
         };
+    }
+
+    getPlayers(): Player[] {
+        this.players = [];
+        if (this.game.players) {
+            for (const id in this.game.players) {
+                const player = this.game.players[id];
+                this.players.push(player);
+            }
+        }
+        return this.players;
+    }
+
+    trackByPlayerFn(i: number, player: Player): string {
+        return player.id;
     }
 }

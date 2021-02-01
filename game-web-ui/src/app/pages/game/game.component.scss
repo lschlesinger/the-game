@@ -5,15 +5,35 @@
   height: 100vh;
 }
 
+.game__info-bar-tag {
+  color: #143131;
+}
+
 .game__content {
   height: 100%;
+}
+.game__info-bar {
+  background-color: #99A68B;
+  height: 83px;
 }
 
 $players-width: 200px;
 .game__players {
   width: $players-width;
-  background-color: green;
+  background-color: #143131;
   height: 100%;
+}
+
+.game__area {
+  padding: $unit-sm;
+}
+
+.game__hand {
+  padding: $unit-xs;
+}
+
+.game__logo {
+  width: $players-width;
 }
 
 $pile-width: 100px;
@@ -22,7 +42,6 @@ $pile-height: 160px;
   margin: $unit-md;
   width: $pile-width;
   height: $pile-height;
-  background-color: #444a54;
   cursor: pointer;
 
   img {
@@ -32,8 +51,13 @@ $pile-height: 160px;
     border: none;
 
     &.game__card--selected {
-      border: 5px solid lightcoral;
+      border: 5px solid #E75428;
       opacity: 0.8;
     }
+  }
+
+  &.game__card--bordered {
+    border: 1px solid $primary;
+    border-radius: 5px;
   }
 }

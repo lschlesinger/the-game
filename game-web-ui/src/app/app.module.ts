@@ -6,14 +6,14 @@ import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NZ_I18N} from 'ng-zorro-antd/i18n';
-import {en_US} from 'ng-zorro-antd/i18n';
+import {en_US, NZ_I18N} from 'ng-zorro-antd/i18n';
 import {registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
 import {LandingComponent} from './pages/landing/landing.component';
 import {StartComponent} from './pages/start/start.component';
 import {GameComponent} from './pages/game/game.component';
 import {SharedModule} from './shared/shared.module';
+import {PlayerAvatarComponent} from './pages/game/player-avatar/player-avatar.component';
 
 registerLocaleData(en);
 
@@ -22,7 +22,8 @@ registerLocaleData(en);
         AppComponent,
         LandingComponent,
         StartComponent,
-        GameComponent
+        GameComponent,
+        PlayerAvatarComponent,
     ],
     imports: [
         BrowserModule,

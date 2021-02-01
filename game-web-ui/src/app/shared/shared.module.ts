@@ -14,6 +14,11 @@ import {GameService} from './services/game.service';
 import {NzDividerModule} from 'ng-zorro-antd/divider';
 import {NzMessageModule} from 'ng-zorro-antd/message';
 import {CardPipe} from './pipes/card.pipe';
+import {NzLayoutModule} from "ng-zorro-antd/layout";
+import {NzAvatarModule} from "ng-zorro-antd/avatar";
+import {NzTypographyModule} from "ng-zorro-antd/typography";
+import {NzBadgeModule} from "ng-zorro-antd/badge";
+import {NzTagModule} from "ng-zorro-antd/tag";
 
 @NgModule({
     imports: [
@@ -25,6 +30,11 @@ import {CardPipe} from './pipes/card.pipe';
         NzDropDownModule,
         NzDividerModule,
         NzMessageModule,
+        NzLayoutModule,
+        NzAvatarModule,
+        NzTypographyModule,
+        NzBadgeModule,
+        NzTagModule,
         ApiModule,
         RouterModule
     ],
@@ -37,6 +47,11 @@ import {CardPipe} from './pipes/card.pipe';
         NzDropDownModule,
         NzDividerModule,
         NzMessageModule,
+        NzLayoutModule,
+        NzAvatarModule,
+        NzTypographyModule,
+        NzBadgeModule,
+        NzTagModule,
         ApiModule,
         CardPipe
     ],
