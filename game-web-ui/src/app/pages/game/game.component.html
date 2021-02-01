@@ -130,6 +130,14 @@
         <div nz-row
              nzAlign="middle"
              nzJustify="center"
+             class="padding-top--xs">
+            <a class="game__rules-link" target="_blank" href="http://middys.nsv.de/wp-content/uploads/2018/01/the-game-english.pdf"><i nz-icon nzType="bulb"
+                                                                                              nzTheme="outline"></i>
+                Check the rules again</a>
+        </div>
+        <div nz-row
+             nzAlign="middle"
+             nzJustify="center"
              class="padding-vertical--xs">
             <button nz-button (click)="startGame()"
                     [disabled]="game.status !== 'open'"
