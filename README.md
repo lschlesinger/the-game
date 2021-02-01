@@ -35,7 +35,7 @@
 
 ...
 
-Regarding acknowledgement, find more information [here](./docs/Acknowledgement.md).
+Regarding acknowledgement, find more information [here](Acknowledgement.md).
 
 ### Mission
 
