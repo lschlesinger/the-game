@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~ng-zorro-antd/ng-zorro-antd.min.css";
 @import '~src/app/shared/styles/main.scss';
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 html, body {
   background-size: cover;
@@ -19,7 +17,6 @@ html, body {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Roboto', sans-serif;
   -webkit-overflow-scrolling: touch;
 }
 

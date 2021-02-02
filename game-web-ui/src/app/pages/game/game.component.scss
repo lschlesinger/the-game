@@ -25,7 +25,7 @@ $players-width: 200px;
 }
 
 .game__area {
-  padding: $unit-sm;
+  padding: $unit-xs;
 }
 
 .game__hand {
@@ -39,7 +39,7 @@ $players-width: 200px;
 $pile-width: 100px;
 $pile-height: 160px;
 .game__card {
-  margin: $unit-md;
+  margin: $unit-sm;
   width: $pile-width;
   height: $pile-height;
   cursor: pointer;

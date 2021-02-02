@@ -56,15 +56,22 @@
                      nzJustify="center"
                      nzAlign="middle">
                     <div nz-col>
-                        <div class="game__card">
-                            <img src="{{ 'Default' | card }}"
-                                 width="100%"
-                                 height="100%">
+                        <div nz-row
+                             nzJustify="center"
+                             nzAlign="middle">
+                            <div class="game__card">
+                                <img src="{{ 'Default' | card }}"
+                                     width="100%"
+                                     height="100%">
+                            </div>
                         </div>
-                        <p nz-typography nzType="secondary">{{game.drawPile.stack.storage.length}} card(s) left on the
+                        <p class="text-center" nz-typography nzType="secondary">{{game.drawPile.stack.storage.length}}
+                            card(s) left on the
                             pile...</p>
-                        <p nz-typography>{{player.name}} played {{game.currentActions.length}} card(s)</p>
-
+                        <p class="text-center" nz-typography *ngIf="game.status==='running'"><i nz-icon nzType="user"
+                                                                                                nzTheme="outline"></i>
+                            <span nz-typography><strong> {{game.players[game.currentPlayerId]?.name}}</strong></span>
+                            | {{game.currentActions.length}} card(s) played</p>
                     </div>
                 </div>
             </div>
@@ -95,12 +102,17 @@
                 </div>
             </div>
         </div>
-        <nz-divider></nz-divider>
+        <nz-divider class="margin-vertical--xs" nzText="My hand" nzOrientation="left"></nz-divider>
         <div class="game__hand"
-             nz-col
-        >
+             nz-col>
             <div nz-row nzJustify="center" nzAlign="middle">
-                <h3>My current hand</h3>
+                <div nz-col>
+                    <nz-tag *ngIf="checkForPlayersTurn()" [nzColor]="'#E75428'">
+                        <i nz-icon nzType="hourglass" nzTheme="outline"></i>
+                        <span>Your turn!</span>
+                    </nz-tag>
+                </div>
+
             </div>
             <div nz-row nzJustify="center" nzAlign="middle">
                 <div *ngFor="let card of getHand()"
@@ -131,7 +143,8 @@
              nzAlign="middle"
              nzJustify="center"
              class="padding-top--xs">
-            <a class="game__rules-link" target="_blank" href="http://middys.nsv.de/wp-content/uploads/2018/01/the-game-english.pdf"><i nz-icon nzType="bulb"
+            <a class="game__rules-link" target="_blank"
+               href="http://middys.nsv.de/wp-content/uploads/2018/01/the-game-english.pdf"><i nz-icon nzType="bulb"
                                                                                               nzTheme="outline"></i>
                 Check the rules again</a>
         </div>

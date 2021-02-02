@@ -38,8 +38,8 @@ public struct Game: Content {
 
     /// Indicates whether "the game" or "the team" has won or it is still undecided.
     enum Result: String, Encodable {
-        case win
-        case lose
+        case won
+        case lost
         case none
     }
     var result: Result
@@ -141,7 +141,7 @@ extension Game {
         // 0. check if game lost because player has not played sufficient actions, but has no options
         if !sufficientActionsPlayed && !player.hasOptions(on: gamePiles) {
             self.status = .closed
-            self.result = .lose
+            self.result = .lost
             return
         }
 
@@ -166,7 +166,7 @@ extension Game {
                 self.currentPlayerId = player.id
                 self.currentActions = []
                 if !player.hasOptions(on: self.gamePiles) {
-                    self.result = .lose
+                    self.result = .lost
                     self.status = .closed
                     self.removeGame()
                 }
@@ -175,7 +175,7 @@ extension Game {
             if player.id == currentPlayerId {
                 // if all players have no cards left, this game is won
                 if foundCurrentPlayer && player.hand.count == 0 {
-                    self.result = .win
+                    self.result = .won
                     self.status = .closed
                     self.removeGame()
                     break

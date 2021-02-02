@@ -1,4 +1,10 @@
-<nz-badge [nzDot]="game.currentPlayerId == player.id">
+<nz-badge *ngIf="game.drawPile.stack.storage.length>0" [nzDot]="game.currentPlayerId == player.id">
+    <nz-avatar class="game__player-avatar"
+               [nzShape]="'square'"
+               [nzSize]="64"
+               nzText="{{player.name}}"></nz-avatar>
+</nz-badge>
+<nz-badge *ngIf="game.drawPile.stack.storage.length===0" [nzCount]="game.players[game.currentPlayerId]?.hand.length">
     <nz-avatar class="game__player-avatar"
                [nzShape]="'square'"
                [nzSize]="64"

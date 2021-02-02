@@ -91,8 +91,11 @@ export class GameComponent implements OnInit, OnDestroy {
             };
             this.gameService.playAction(this.gameId, this.currentAction)
                 .subscribe((game) => {
-                    this.message.info(`Thanks. You have played ${game.currentActions.length} cards.`);
-                });
+                    },
+                    (error => {
+                        console.log(error);
+                        this.message.warning(error.error.reason);
+                    }));
         } else {
             this.message.info('Wait until it is your turn!');
         }
@@ -105,24 +108,13 @@ export class GameComponent implements OnInit, OnDestroy {
     passAction(): void {
         this.gameService.passGame(this.gameId)
             .subscribe(() => {
-                this.resetCurrentAction();
-                this.message.info('Thanks for your move!');
-            });
-    }
-
-    private getGame(): void {
-        this.gameSub = this.gameService.getGame(this.gameId)
-            .subscribe((game) => {
-                this.game = game;
-            });
-    }
-
-    private resetCurrentAction(): void {
-        this.currentAction = {
-            gamePileId: null,
-            card: null,
-            playerId: this.player.id
-        };
+                    this.resetCurrentAction();
+                    this.message.info('Thanks for your move!');
+                },
+                (error => {
+                    console.log(error);
+                    this.message.warning(error.error.reason);
+                }));
     }
 
     getPlayers(): Player[] {
@@ -138,5 +130,20 @@ export class GameComponent implements OnInit, OnDestroy {
 
     trackByPlayerFn(i: number, player: Player): string {
         return player.id;
+    }
+
+    private getGame(): void {
+        this.gameSub = this.gameService.getGame(this.gameId)
+            .subscribe((game) => {
+                this.game = game;
+            });
+    }
+
+    private resetCurrentAction(): void {
+        this.currentAction = {
+            gamePileId: null,
+            card: null,
+            playerId: this.player.id
+        };
     }
 }
