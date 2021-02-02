@@ -6,14 +6,13 @@
   <a href="https://github.com/lschlesinger/the-game">
     <img src="game-web-ui/src/assets/images/logo.png" alt="Logo" width="500">
   </a>
-
   <p align="center">
     Swift implementation of the card game "The Game", by Steffen Benndorf using the <a href="https://github.com/Apodini/Apodini">Apodini Framework</a>.
     The Endangered Natur Edition is based on an environmental education concept, which aims to raise awareness of the current threats to certain species.
-    <br />
-  </p>
+      </p>
+    <br/>
+  </p> 
 </p>
-
 
 <!-- TABLE OF CONTENTS -->
 
@@ -30,6 +29,9 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About the Project
+
+Find more information about the original game [here](http://middys.nsv.de/middys/the-game/).
+
 
 ### Description
 
