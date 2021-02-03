@@ -27,6 +27,11 @@ export class PlayerService {
                 }));
     }
 
+    logout(): void {
+        localStorage.removeItem(PLAYER_KEY);
+        this.getPlayerFromStorage();
+    }
+
     private getPlayerFromStorage(): void {
         const value: string = localStorage.getItem(PLAYER_KEY);
         console.log(value);

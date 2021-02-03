@@ -77,6 +77,11 @@ export class StartComponent implements OnInit, OnDestroy {
         this.playerSub.unsubscribe();
     }
 
+    logout(): void {
+        this.playerService.logout();
+        this.router.navigateByUrl('/');
+    }
+
     private updateGames(): void {
         this.gameService.getGames()
             .subscribe((games) => {
@@ -84,6 +89,4 @@ export class StartComponent implements OnInit, OnDestroy {
                 this.listOfDisplayData = [...this.games];
             });
     }
-
-
 }

@@ -5,6 +5,13 @@
      *ngIf="currentPlayer">
     <div class="start__content"
          nz-col>
+        <div nz-row
+             nzJustify="center"
+             nzAlign="middle">
+            <button nz-button
+                    (click)="logout()"
+                    nzType="default">Logout</button>
+        </div>
         <div class="start__create-game-form"
              nz-row
              nzJustify="center"
