@@ -12,6 +12,7 @@
 .game__content {
   height: 100%;
 }
+
 .game__info-bar {
   background-color: #99A68B;
   height: 83px;
@@ -42,13 +43,15 @@ $pile-height: 160px;
   margin: $unit-sm;
   width: $pile-width;
   height: $pile-height;
+  border-radius: 5px;
   cursor: pointer;
+  box-shadow: .2em .2em .5em $primary;
 
   img {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+    border: 1px solid $primary;
     border-radius: 5px;
-    border: none;
 
     &.game__card--selected {
       border: 5px solid #E75428;
@@ -59,6 +62,13 @@ $pile-height: 160px;
   &.game__card--bordered {
     border: 1px solid $primary;
     border-radius: 5px;
+    box-shadow: .2em .2em .5em $primary;
+  }
+
+
+  &.game__card--info {
+    box-shadow: none;
+    cursor: auto;
   }
 }
 

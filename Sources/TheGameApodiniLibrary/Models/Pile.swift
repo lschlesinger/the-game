@@ -60,7 +60,7 @@ struct DrawPile: Pile {
 
     init() {
         self.id = UUID().uuidString
-        self.stack = Stack<Card>(array: (2...99).map { Card(number: $0) })
+        self.stack = Stack<Card>(array: (2...20).map { Card(number: $0) })
     }
 }
 

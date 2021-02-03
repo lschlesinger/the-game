@@ -32,7 +32,7 @@ export namespace Game {
         Running: 'running' as StatusEnum,
         Closed: 'closed' as StatusEnum
     };
-    export type ResultEnum = 'win' | 'lose' | 'none';
+    export type ResultEnum = 'won' | 'lost' | 'none';
     export const ResultEnum = {
         Win: 'win' as ResultEnum,
         Lose: 'lose' as ResultEnum,

@@ -18,16 +18,19 @@ export class GameComponent implements OnInit, OnDestroy {
     player: Player;
     players: Player[];
     currentAction: Action;
+    prevState: string;
+    modalVisible: boolean;
 
     private routeSub: Subscription;
     private gameSub: Subscription;
     private playerSub: Subscription;
 
+
     constructor(
         private route: ActivatedRoute,
         private gameService: GameService,
         private playerService: PlayerService,
-        private message: NzMessageService
+        private message: NzMessageService,
     ) {
     }
 
@@ -64,6 +67,7 @@ export class GameComponent implements OnInit, OnDestroy {
             }, (err) => {
                 this.message.error('Missing players to start game.');
             });
+
     }
 
     selectCardForAction(card: Card): void {
@@ -80,10 +84,10 @@ export class GameComponent implements OnInit, OnDestroy {
     }
 
     selectPileForAction(pile: GamePile): void {
-        console.log(pile);
         if (this.checkForPlayersTurn()) {
-            if (!(this.currentAction || this.currentAction.card)) {
+            if (!this.currentAction || !this.currentAction?.card) {
                 this.message.info('Please select a card first.');
+                return;
             }
             this.currentAction = {
                 ...this.currentAction,
@@ -93,7 +97,6 @@ export class GameComponent implements OnInit, OnDestroy {
                 .subscribe((game) => {
                     },
                     (error => {
-                        console.log(error);
                         this.message.warning(error.error.reason);
                     }));
         } else {
@@ -109,7 +112,6 @@ export class GameComponent implements OnInit, OnDestroy {
         this.gameService.passGame(this.gameId)
             .subscribe(() => {
                     this.resetCurrentAction();
-                    this.message.info('Thanks for your move!');
                 },
                 (error => {
                     console.log(error);
@@ -132,10 +134,22 @@ export class GameComponent implements OnInit, OnDestroy {
         return player.id;
     }
 
+    getPileHistory(pileId: string): Card[] {
+        const pileCards = this.game.gamePiles.find((pile) => pile.id === pileId).stack.storage;
+        const pileSize = pileCards.length;
+        const pileLastIndex = pileSize - 1;
+        const recentCards = pileCards.slice(pileLastIndex - (Math.min(pileSize - 1, 2)), pileSize);
+        return recentCards;
+    }
+
     private getGame(): void {
         this.gameSub = this.gameService.getGame(this.gameId)
             .subscribe((game) => {
+                this.prevState = this.game?.status;
                 this.game = game;
+                if (this.game.status === 'closed' && this.prevState !== this.game.status) {
+                    this.modalVisible = true;
+                }
             });
     }
 

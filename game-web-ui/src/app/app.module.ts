@@ -14,6 +14,7 @@ import {StartComponent} from './pages/start/start.component';
 import {GameComponent} from './pages/game/game.component';
 import {SharedModule} from './shared/shared.module';
 import {PlayerAvatarComponent} from './pages/game/player-avatar/player-avatar.component';
+import { ResultModalComponent } from './pages/game/result-modal/result-modal.component';
 
 registerLocaleData(en);
 
@@ -24,6 +25,7 @@ registerLocaleData(en);
         StartComponent,
         GameComponent,
         PlayerAvatarComponent,
+        ResultModalComponent,
     ],
     imports: [
         BrowserModule,

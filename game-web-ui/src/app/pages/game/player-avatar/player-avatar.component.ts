@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Game, Player} from "../../../shared/openapi";
+import {Game, Player} from '../../../shared/openapi';
 
 @Component({
     selector: 'app-player-avatar',

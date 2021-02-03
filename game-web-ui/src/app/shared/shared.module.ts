@@ -19,6 +19,9 @@ import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzTypographyModule} from "ng-zorro-antd/typography";
 import {NzBadgeModule} from "ng-zorro-antd/badge";
 import {NzTagModule} from "ng-zorro-antd/tag";
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzCollapseModule} from "ng-zorro-antd/collapse";
+import {NzTimelineModule} from "ng-zorro-antd/timeline";
 
 @NgModule({
     imports: [
@@ -35,6 +38,9 @@ import {NzTagModule} from "ng-zorro-antd/tag";
         NzTypographyModule,
         NzBadgeModule,
         NzTagModule,
+        NzModalModule,
+        NzCollapseModule,
+        NzTimelineModule,
         ApiModule,
         RouterModule
     ],
@@ -52,6 +58,9 @@ import {NzTagModule} from "ng-zorro-antd/tag";
         NzTypographyModule,
         NzBadgeModule,
         NzTagModule,
+        NzModalModule,
+        NzCollapseModule,
+        NzTimelineModule,
         ApiModule,
         CardPipe
     ],

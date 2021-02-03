@@ -1,12 +1,21 @@
-<nz-badge *ngIf="game.drawPile.stack.storage.length>0" [nzDot]="game.currentPlayerId == player.id">
+<nz-badge *ngIf="game.drawPile.stack.storage.length>0 && (game.players[player.id]?.hand.length>0 || game.status==='open')" [nzDot]="game.currentPlayerId == player.id">
     <nz-avatar class="game__player-avatar"
                [nzShape]="'square'"
                [nzSize]="64"
                nzText="{{player.name}}"></nz-avatar>
 </nz-badge>
-<nz-badge *ngIf="game.drawPile.stack.storage.length===0" [nzCount]="game.players[game.currentPlayerId]?.hand.length">
+<nz-badge *ngIf="game.drawPile.stack.storage.length===0 &&  game.players[player.id]?.hand.length>0 " [nzCount]="game.players[player.id]?.hand.length" style="color: #E75428">
     <nz-avatar class="game__player-avatar"
                [nzShape]="'square'"
                [nzSize]="64"
                nzText="{{player.name}}"></nz-avatar>
 </nz-badge>
+<nz-badge *ngIf="game.players[player.id]?.hand.length===0 && game.status!='open'" [nzCount]="iconTemplate">
+    <nz-avatar class="game__player-avatar"
+               [nzShape]="'square'"
+               [nzSize]="64"
+               nzText="{{player.name}}"></nz-avatar>
+</nz-badge>
+<ng-template #iconTemplate>
+    <i nz-icon nzType="smile" nzTheme="twotone" class="ant-scroll-number-custom-component" [nzTwotoneColor]="'#E75428'" style="font-size: 24px;"></i>
+</ng-template>

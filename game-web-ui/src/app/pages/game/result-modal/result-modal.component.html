@@ -1,0 +1,30 @@
+<nz-modal [(nzVisible)]="modalVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div *ngIf="game.result==='lost'" class="margin-top--md">
+        <img src="assets/images/lost.png" width="100%">
+        <nz-collapse>
+            <nz-collapse-panel [nzHeader]="'Game Summary'" [nzActive]="true" [nzDisabled]="false">
+                <p>
+                    There {{ game.drawPile.stack.storage.length === 1 ? " was " : " were " }} {{ game.drawPile.stack.storage.length }} {{ game.drawPile.stack.storage.length === 1 ? " card " : " cards " }}
+                    left on the pile.
+                </p>
+                <p *ngFor="let player of getPlayersWithCards()">
+                    {{ player.name }} had {{ player.hand.length }} cards left:
+                    <nz-badge *ngFor="let card of player.hand"
+                              nzStandalone
+                              [nzCount]=card.number
+                              [nzStyle]="{ backgroundColor: '#143131', color: '#fff', boxShadow: '0 0 0 1px #d9d9d9 inset' }"
+                    ></nz-badge>
+                </p>
+            </nz-collapse-panel>
+        </nz-collapse>
+    </div>
+    <div *ngIf="game.result==='won'" class="margin-top--md">
+        <img src="assets/images/won.png" width="100%">
+    </div>
+    <div *nzModalFooter>
+        <button nz-button class="result-modal__button-leave">
+            <a routerLink="/"> Leave </a>
+        </button>
+        <button nz-button class="result-modal__button-again" (click)="handleOk()">Play again!</button>
+    </div>
+</nz-modal>
