@@ -49,7 +49,7 @@
                                      width="100%">
                             </div>
                             <div class="margin--top-sm">
-                                <nz-timeline *ngIf="pile.stack.storage.length > 0">
+                                <nz-timeline *ngIf="pile.stack.storage.length > 0 && showHistory">
                                     <nz-timeline-item
                                             *ngFor="let card of getPileHistory(pile.id); let j = index"
                                             nzColor="#99A68B">
@@ -113,7 +113,7 @@
                              nzAlign="bottom"
                              nzJustify="center">
                             <div class="margin--top-sm">
-                                <nz-timeline *ngIf="pile.stack.storage.length > 0">
+                                <nz-timeline *ngIf="pile.stack.storage.length > 0 && showHistory">
                                     <nz-timeline-item
                                             *ngFor="let card of getPileHistory(pile.id); let j = index"
                                             nzColor="#99A68B">
@@ -139,6 +139,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="padding-vertical--xs padding-horizontal--lg"
+             nz-row
+             nzAlign="middle"
+             nzJustify="start">
+            <nz-switch [(ngModel)]="showHistory" nzSize="small" style="color: #143131"> </nz-switch> <span class="padding-horizontal--xs"> Show pile history</span>
         </div>
         <nz-divider class="no-margin" nzOrientation="center" nzText="My hand"></nz-divider>
         <div class="game__hand"

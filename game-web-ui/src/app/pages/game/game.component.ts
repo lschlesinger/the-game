@@ -20,6 +20,7 @@ export class GameComponent implements OnInit, OnDestroy {
     currentAction: Action;
     prevState: string;
     modalVisible: boolean;
+    showHistory = false;
 
     private routeSub: Subscription;
     private gameSub: Subscription;

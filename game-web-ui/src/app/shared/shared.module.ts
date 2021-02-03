@@ -22,6 +22,7 @@ import {NzTagModule} from "ng-zorro-antd/tag";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzCollapseModule} from "ng-zorro-antd/collapse";
 import {NzTimelineModule} from "ng-zorro-antd/timeline";
+import {NzSwitchModule} from "ng-zorro-antd/switch";
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import {NzTimelineModule} from "ng-zorro-antd/timeline";
         NzModalModule,
         NzCollapseModule,
         NzTimelineModule,
+        NzSwitchModule,
         ApiModule,
         RouterModule
     ],
@@ -61,6 +63,7 @@ import {NzTimelineModule} from "ng-zorro-antd/timeline";
         NzModalModule,
         NzCollapseModule,
         NzTimelineModule,
+        NzSwitchModule,
         ApiModule,
         CardPipe
     ],
