@@ -2,7 +2,6 @@
 
 import PackageDescription
 
-
 let package = Package(
     name: "TheGameApodini",
     platforms: [
@@ -12,13 +11,15 @@ let package = Package(
         .executable(name: "TheGameApodini", targets: ["TheGameApodini"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .branch("develop"))
+        .package(url: "https://github.com/Apodini/Apodini.git", .branch("feature/oas-tags"))
     ],
     targets: [
         .target(
             name: "TheGameApodini",
             dependencies: [
                 .product(name: "Apodini", package: "Apodini"),
+                .product(name: "ApodiniOpenAPI", package: "Apodini"),
+                .product(name: "ApodiniREST", package: "Apodini"),
                 .target(name: "TheGameApodiniLibrary")
             ]
         ),

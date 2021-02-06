@@ -9,6 +9,8 @@ struct PlayerComponent: Component {
         Group("player") {
             CreatePlayer()
                 .operation(.create)
+                .description("Creates a new player with a unique id.")
+                .tags("api-player")
         }
     }
 }

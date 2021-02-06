@@ -13,4 +13,4 @@ OUTPUT_DIR=$SCRIPT_DIR/src/app/shared/openapi
 rm -rf "$OUTPUT_DIR"
 swagger-codegen generate -i "$OPEN_API_INPUT" -l typescript-angular -o "$OUTPUT_DIR" --additional-properties ngVersion=11.1.0
 sed -i '' 's/: ModuleWithProviders/: ModuleWithProviders\<ApiModule\>/g' "$OUTPUT_DIR"/api.module.ts
-sed -i '' "s/basePath = '.*'/basePath = ''/" "$OUTPUT_DIR"/api/default.service.ts
+find "$OUTPUT_DIR"/api/ -name '*.service.ts' -exec sed -i '' "s/basePath = '.*'/basePath = ''/" {} \;

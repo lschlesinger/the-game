@@ -62,18 +62,18 @@ public struct Game: Content {
 // MARK: Game setup.
 public extension Game {
     init(name: String) {
-        self.id = UUID().uuidString
+        id = UUID().uuidString
         self.name = name
-        self.drawPile = DrawPile()
-        self.gamePiles = [
+        drawPile = DrawPile()
+        gamePiles = [
             GamePile(order: .asc),
             GamePile(order: .asc),
             GamePile(order: .desc),
             GamePile(order: .desc)
         ]
-        self.status = .open
-        self.result = .none
-        self.players = [:]
+        status = .open
+        result = .none
+        players = [:]
     }
 
     mutating func add(_ players: Player...) {
@@ -92,8 +92,8 @@ extension Game {
         }
 
         // 0.2 Check for valid state to start a game.
-        guard self.status == .open else {
-            throw GameError("Can't start a game in state \(self.status).")
+        guard status == .open else {
+            throw GameError("Can't start a game in state \(status).")
         }
 
         // 1. Distribute cards
@@ -105,14 +105,12 @@ extension Game {
         // 3. Change Status
         status = .running
 
-        // TODO: 5. Emit to subscribers
-
     }
 
     private mutating func distributeCards() {
         for (playerId, player) in players {
             var player = player
-            player.hand = self.drawPile.draw(self.handSize)
+            player.hand = drawPile.draw(handSize)
             players[playerId] = player
         }
     }
@@ -140,8 +138,8 @@ extension Game {
 
         // 0. check if game lost because player has not played sufficient actions, but has no options
         if !sufficientActionsPlayed && !player.hasOptions(on: gamePiles) {
-            self.status = .closed
-            self.result = .lost
+            status = .closed
+            result = .lost
             return
         }
 
@@ -158,26 +156,26 @@ extension Game {
         let orderedPlayerKeys = players.keys.sorted { $0 < $1 }
         var foundCurrentPlayer = false
         var currentKeyIdx = 0
-        while self.status == .running {
+        while status == .running {
             guard let player = players[orderedPlayerKeys[currentKeyIdx]] else {
                 throw GameError("Failed to pass to next player.")
             }
             if foundCurrentPlayer && player.hand.count > 0 {
-                self.currentPlayerId = player.id
-                self.currentActions = []
-                if !player.hasOptions(on: self.gamePiles) {
-                    self.result = .lost
-                    self.status = .closed
-                    self.removeGame()
+                currentPlayerId = player.id
+                currentActions = []
+                if !player.hasOptions(on: gamePiles) {
+                    result = .lost
+                    status = .closed
+                    removeGame()
                 }
                 break
             }
             if player.id == currentPlayerId {
                 // if all players have no cards left, this game is won
                 if foundCurrentPlayer && player.hand.count == 0 {
-                    self.result = .won
-                    self.status = .closed
-                    self.removeGame()
+                    result = .won
+                    status = .closed
+                    removeGame()
                     break
                 }
                 foundCurrentPlayer = true
@@ -220,8 +218,8 @@ extension Game {
     private func removeGame() {
         print("Triggered game removal in t-5 min.")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 60 * 5) {
-            print("Removing game \(self.name) from in-memory store.")
-            GameStore.instance.elements.removeValue(forKey: self.id)
+            print("Removing game \(name) from in-memory store.")
+            GameStore.instance.elements.removeValue(forKey: id)
         }
     }
 }

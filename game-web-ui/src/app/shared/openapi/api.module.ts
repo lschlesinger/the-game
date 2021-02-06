@@ -3,14 +3,18 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
-import { DefaultService } from './api/default.service';
+import { ApiActionService } from './api/apiAction.service';
+import { ApiGameService } from './api/apiGame.service';
+import { ApiPlayerService } from './api/apiPlayer.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
-    DefaultService ]
+    ApiActionService,
+    ApiGameService,
+    ApiPlayerService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders<ApiModule> {

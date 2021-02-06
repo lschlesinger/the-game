@@ -71,7 +71,14 @@
                      nzAlign="middle"
                      nzJustify="center">
                     <div nz-col>
-                        <p class="text-center, no-margin" nz-typography
+                        <p class="no-padding padding-horizontal--lg"
+                             nz-row
+                             nzAlign="middle"
+                             nzJustify="start">
+                            <nz-switch [(ngModel)]="showHistory" nzSize="small" style="color: #143131"></nz-switch>
+                            <span class="padding-horizontal--xs"> Show game pile histories</span>
+                        </p>
+                        <p class="text-center no-margin" nz-typography
                            nzType="secondary">{{game.drawPile.stack.storage.length}}
                             card(s) left on the
                             pile...</p>
@@ -139,12 +146,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="padding-vertical--xs padding-horizontal--lg"
-             nz-row
-             nzAlign="middle"
-             nzJustify="start">
-            <nz-switch [(ngModel)]="showHistory" nzSize="small" style="color: #143131"> </nz-switch> <span class="padding-horizontal--xs"> Show pile history</span>
         </div>
         <nz-divider class="no-margin" nzOrientation="center" nzText="My hand"></nz-divider>
         <div class="game__hand"

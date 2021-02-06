@@ -23,8 +23,8 @@
         "package": "Apodini",
         "repositoryURL": "https://github.com/Apodini/Apodini.git",
         "state": {
-          "branch": "develop",
-          "revision": "338ea6614b75d72096dd77459a7c31419835a4d4",
+          "branch": "feature/oas-tags",
+          "revision": "4d03add2196900b759e62731bcabe845a3579e37",
           "version": null
         }
       },
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git",
         "state": {
           "branch": null,
-          "revision": "d861e6dd41ad0c1096a9a730611fa6a8cc307b0c",
-          "version": "0.3.1"
+          "revision": "2e4c49c21ffb2135f1c99fbfcf2119c9d24f5e8c",
+          "version": "0.3.2"
         }
       },
       {

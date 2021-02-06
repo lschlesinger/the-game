@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject} from 'rxjs';
-import {DefaultService, Player} from '../openapi';
+import {ApiPlayerService, Player} from '../openapi';
 import {map} from 'rxjs/operators';
 
 const PLAYER_KEY = 'the-game-player';
@@ -10,7 +10,7 @@ export class PlayerService {
 
     private player$: ReplaySubject<Player> = new ReplaySubject<Player>(1);
 
-    constructor(private apiService: DefaultService) {
+    constructor(private apiPlayerService: ApiPlayerService) {
         this.getPlayerFromStorage();
     }
 
@@ -19,7 +19,7 @@ export class PlayerService {
     }
 
     public createPlayer(name: string): Observable<Player> {
-        return this.apiService.createPlayer(name)
+        return this.apiPlayerService.createPlayer(name)
             .pipe(
                 map((playerResponse) => {
                     this.setPlayerInStorage(playerResponse.data);
