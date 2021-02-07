@@ -17,7 +17,4 @@ export class PlayerAvatarComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
 }
-
-// TODO: highlight font for current player (currently cannot be seen whose turn it is)!

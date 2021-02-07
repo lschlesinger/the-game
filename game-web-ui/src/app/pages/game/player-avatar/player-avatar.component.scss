@@ -1,7 +1,7 @@
 @import "~src/app/shared/styles/main";
 
 .game__player-avatar {
-  color: #E75428;
+  color: $warn;
   background-color: #fde3cf;
   margin-bottom: $unit-sm;
   border-radius: 4px;
@@ -9,13 +9,9 @@
   vertical-align: middle;
 }
 
-.head-example {
-  width: 42px;
-  height: 42px;
-  border-radius: 4px;
-  background: #eee;
-  display: inline-block;
-  vertical-align: middle;
+.game__player-avatar--active {
+  font-weight: $font-bold;
+  border: 4px solid $warn;
 }
 
 nz-badge.ant-badge-rtl {

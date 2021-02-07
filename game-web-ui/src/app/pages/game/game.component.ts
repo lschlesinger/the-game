@@ -26,7 +26,6 @@ export class GameComponent implements OnInit, OnDestroy {
     private gameSub: Subscription;
     private playerSub: Subscription;
 
-
     constructor(
         private route: ActivatedRoute,
         private gameService: GameService,

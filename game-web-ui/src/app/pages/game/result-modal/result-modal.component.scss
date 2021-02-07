@@ -1,8 +1,10 @@
+@import "~src/app/shared/styles/main";
+
 .result-modal__button-leave {
-  color: #99A68B;
+  color: $accent;
 }
 
 .result-modal__button-again {
-  color: #ffffff;
-  background-color: #143131;
+  color: $white-bg;
+  background-color: $primary;
 }

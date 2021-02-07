@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Game, Player} from '../../../shared/openapi';
+import {GameService} from '../../../shared/services/game.service';
 
 @Component({
     selector: 'app-result-modal',
@@ -12,17 +13,17 @@ export class ResultModalComponent implements OnInit {
     @Input() public modalVisible: boolean;
     @Input() public game: Game;
 
-    constructor() {
+    constructor(private gameService: GameService) {
     }
 
     handleOk(): void {
-        console.log('Button ok clicked!');
-        this.modalVisible = false;
-        // reset game.
+        this.gameService.startGame(this.game.id)
+            .subscribe((game) => {
+                this.modalVisible = false;
+            });
     }
 
     handleCancel(): void {
-        console.log('Button cancel clicked!');
         this.modalVisible = false;
     }
 
@@ -32,5 +33,4 @@ export class ResultModalComponent implements OnInit {
     getPlayersWithCards(): Player[] {
         return Object.values(this.game.players).filter(player => player.hand.length > 0);
     }
-
 }
