@@ -2,4 +2,4 @@
 
 ![step-7-1](./info-material/Apodini-OAS-Instructions/step-7-1.png)
 
-[next: Step 8](./step-8.md)
+[previous: Step 7 - Output OAS](./step-7.md) [next: Step 8](./step-8.md)
