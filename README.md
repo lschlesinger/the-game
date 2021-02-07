@@ -48,7 +48,7 @@ Please find acknowledgement as well as the source of the pictures used [here](Do
 
 By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sample project tackles the following problem:
 <p align="center">
-  <img src="./Documentation/info-material/Apodini-Problem-Statement.png" alt="Logo" width="500">
+  <img src="./Documentation/info-material/Apodini-Problem-Statement.png" alt="Logo" width="600">
 </p>
 
 ### Built With
@@ -58,12 +58,35 @@ By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sampl
 * [Angular](https://angular.io/)
 * [Ant Design](https://ant.design/docs/react/introduce)
 * [Docker](https://www.docker.com/)
+* [NGINX](https://www.nginx.com/)
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-...
+### Requirements
+
+* Docker
+* Docker Compose
+
+### Run
+
+To get a local copy up and running follow these simple steps.
+
+1. Clone the repo
+
+```sh
+git clone git@github.com:lschlesinger/the-game.git
+```
+2. Start backend and nginx which serves frontend
+
+```sh
+docker-compose up
+```
+
+3. Visit `http://localhost:80`
+
+
 <!-- CRITICAL REFLECTION -->
 
 ## Critical Reflection of the Software
