@@ -32,10 +32,10 @@
 
 Find more information about the original game [here](http://middys.nsv.de/middys/the-game/).
 
-
 ### Description
 
-...
+By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sample project tackles the following problem:
+![problem](./Documentation/info-material/Apodini-Problem-Statement.png)
 
 Regarding acknowledgement, find more information [here](Documentation/Acknowledgement.md).
 
