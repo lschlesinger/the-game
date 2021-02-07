@@ -31,12 +31,18 @@
 ## About the Project
 
 Find more information about the original game [here](http://middys.nsv.de/middys/the-game/).
+This is how our edition looks like:
+<p align="center">
+  <img src="game-web-ui/src/assets/images/game-example.png" alt="Logo" width="500">
+</p>
+
+We hope you have fun playing it!
 
 ### Description
 
 By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sample project tackles the following problem:
 <p align="center">
-  <img src="./Documentation/info-material/Apodini-Problem-Statement.png" alt="Logo" width="600">
+  <img src="./Documentation/info-material/Apodini-Problem-Statement.png" alt="Logo" width="500">
 </p>
 
 Regarding acknowledgement, find more information [here](Documentation/Acknowledgement.md).
