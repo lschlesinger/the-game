@@ -123,12 +123,9 @@ export class GameComponent implements OnInit, OnDestroy {
     getPlayers(): Player[] {
         this.players = [];
         if (this.game.players) {
-            for (const id in this.game.players) {
-                const player = this.game.players[id];
-                this.players.push(player);
-            }
+            this.players = [...Object.values(this.game.players)];
         }
-        return this.players;
+        return this.players.sort((a, b) => a.id.localeCompare(b.id));
     }
 
     trackByPlayerFn(i: number, player: Player): string {
@@ -139,8 +136,7 @@ export class GameComponent implements OnInit, OnDestroy {
         const pileCards = this.game.gamePiles.find((pile) => pile.id === pileId).stack.storage;
         const pileSize = pileCards.length;
         const pileLastIndex = pileSize - 1;
-        const recentCards = pileCards.slice(pileLastIndex - (Math.min(pileSize - 1, 2)), pileSize);
-        return recentCards;
+        return pileCards.slice(pileLastIndex - (Math.min(pileSize - 1, 2)), pileSize);
     }
 
     private getGame(): void {

@@ -5,7 +5,10 @@ MAINTAINER lschlesinger
 WORKDIR /app
 
 # copy sources
-COPY . .
+COPY Package.swift .
+COPY Package.resolved .
+COPY Sources .
+COPY Tests .
 
 # install deps and build app
 RUN swift package clean
