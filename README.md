@@ -133,3 +133,7 @@ npm run start
 ## License
 
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
+
+## Contributors
+
+:two_women_holding_hands: L&L Schlesinger
