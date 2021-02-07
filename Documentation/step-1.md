@@ -2,6 +2,6 @@
 
 ![step-1](./info-material/Apodini-OAS-Instructions/step-1.png)
 
-[previous: Start](./manual.md) 
+[previous: Start](./README.md) 
 
 [next: Step 2](./step-2.md)
