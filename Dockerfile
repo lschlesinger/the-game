@@ -8,6 +8,7 @@ WORKDIR /app
 COPY Package.swift /app
 COPY Package.resolved /app
 COPY Sources/ /app/Sources
+COPY Tests/ /app/Tests
 
 # install deps and build app
 RUN swift package clean
