@@ -33,7 +33,7 @@
 Find more information about the original game [here](http://middys.nsv.de/middys/the-game/).
 This is how our edition looks like:
 <p align="center">
-  <img src="game-web-ui/src/assets/images/game-example.png" alt="Logo" width="500">
+  <img src="game-web-ui/src/assets/images/game-example.png" alt="Logo" width="700">
 </p>
 
 We hope you have fun playing it!
