@@ -64,12 +64,14 @@ By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sampl
 
 ## Getting Started
 
-### Requirements
+### Docker Setup
+
+#### Requirements
 
 * Docker
 * Docker Compose
 
-### Run
+#### Run
 
 To get a local copy up and running follow these simple steps.
 
@@ -85,6 +87,40 @@ docker-compose up
 ```
 
 3. Visit `http://localhost:80`
+
+### Development Setup
+
+#### Requirements
+
+* Node.js
+* npm
+* Swift
+
+#### Run
+
+
+To get a local copy up and running follow these simple steps.
+
+1. Clone the repo
+
+```sh
+git clone git@github.com:lschlesinger/the-game.git
+```
+2. Start backend
+
+```sh
+swift run
+```
+3. Start frontend
+
+```sh
+cd game-web-ui
+npm run start
+```
+
+4. Visit `http://localhost:4200` for frontend (all request to backend will be proxied)
+	1. Visit `http://localhost:8080/doc/openapi` (if not configured differently) to see the generated OpenAPI specification
+	2. Visit `http://localhost:8080/ui/swagger` (if not configured differently) to see explore the web app with swagger-ui
 
 
 <!-- CRITICAL REFLECTION -->
