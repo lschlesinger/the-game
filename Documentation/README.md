@@ -26,7 +26,6 @@ You want to build a web application for your favorite card game.
 Certainly, we want an endpoint returning a game when given a specific identifier as path parameter, i.e., something like a “getGame” endpoint.
 This example is used thoughout the following step-by-step image manual. The “getGame” endpoint is always highlighted with a red rectangle.
 
-
-<div style="text-align: right;">
+<p align="right">
     <a href="./step-1.md">next: step by step manual</a>
-</div>
+</p>
