@@ -1,5 +1,4 @@
 # Acknowledgement
-- _This is WIP, full credits will be available soon_
 
 ## Pictures and Information
 
@@ -18,10 +17,3 @@
 | Hawaiian Monk Seal | NOAA | [Source](https://www.iucnredlist.org/species/13654/45227978) |
 | Amur Leopard| Dmitri Gomon/Shutterstock | [Source](https://www.tierchenwelt.de/specials/tierleben/2874-vom-aussterben-bedrohte-tiere.html?start=1) |
 | Sumatra Tiger| Andrea Izzotti/Shutterstock | [Source](https://www.tierchenwelt.de/specials/tierleben/2874-vom-aussterben-bedrohte-tiere.html?start=9) |
-
-
-
-
-
-
-
