@@ -2,9 +2,5 @@
 
 ![step-8](./info-material/Apodini-OAS-Instructions/step-8.png)
 
-<p align="left">
-    <a href="./step-7-1.md">previous: Step 7 - Output Swagger</a>
-</p>
-<p align="right">
-    <a href="./step-8-1.md">next: Step 8 - Output Model</a>
-</p>
+| <a href="./step-7-1.md">previous: Step 7 - Output Swagger</a> |   <a href="./step-8-1.md">next: Step 8 - Output Model</a> |
+|--|--|
