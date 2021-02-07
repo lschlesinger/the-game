@@ -37,7 +37,7 @@ Find more information about the original game [here](http://middys.nsv.de/middys
 
 ...
 
-Regarding acknowledgement, find more information [here](Acknowledgement.md).
+Regarding acknowledgement, find more information [here](game-web-ui/Documentation/Acknowledgement.md).
 
 ### Mission
 

@@ -13,7 +13,7 @@ struct TheGameWebService: WebService {
         OpenAPIConfiguration(
             outputFormat: .json,
             outputEndpoint: "/docs/openapi",
-            swaggerUiEndpoint: "ui/swagger",
+            swaggerUiEndpoint: "/ui/swagger",
             title: "The Game - Endangered Nature Edition, built with Apodini"
             )
 
