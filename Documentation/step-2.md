@@ -1,5 +1,5 @@
-# Step 1: Create a swift project with Apodini as dependency
+# Step 2: Build game logic
 
-![step-1](./info-material/Apodini-OAS-Instructions/step-1.png)
+![step-2](./info-material/Apodini-OAS-Instructions/step-2.png)
 
-[next: Step 2](../step-2.md)
+[next: Step 3](./step-3.md)
