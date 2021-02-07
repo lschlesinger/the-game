@@ -19,3 +19,5 @@ export class PlayerAvatarComponent implements OnInit {
     }
 
 }
+
+// TODO: highlight font for current player (currently cannot be seen whose turn it is)!

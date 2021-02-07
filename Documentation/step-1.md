@@ -2,6 +2,9 @@
 
 ![step-1](./info-material/Apodini-OAS-Instructions/step-1.png)
 
-[previous: Start](./README.md) 
-
-[next: Step 2](./step-2.md)
+<p align="left">
+    <a href="./README.md">previous: Start</a>
+</p>
+<p align="right">
+    <a href="./step-2.md">next: Step 2</a>
+</p>
