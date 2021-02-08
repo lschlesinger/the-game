@@ -36,9 +36,7 @@ This is how our edition looks like:
   <img src="game-web-ui/src/assets/images/game-example.png" alt="Logo" width="700">
 </p>
 
-We hope you have fun playing it!
-
-Please find acknowledgement as well as the source of the pictures used [here](Documentation/Acknowledgement.md).
+We hope you have fun playing it! Please find acknowledgement as well as the source of the pictures used [here](Documentation/Acknowledgement.md).
 
 ### Environmental Mission
 
@@ -74,7 +72,7 @@ By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sampl
 
 #### Run
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running follow these simple steps:
 
 1. Clone the repo
 
@@ -99,8 +97,7 @@ docker-compose up
 
 #### Run
 
-
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running follow these simple steps:
 
 1. Clone the repo
 
@@ -122,7 +119,7 @@ npm run start
 
 4. Visit `http://localhost:4200` for frontend (all requests to backend will be proxied)
 	1. Visit `http://localhost:8080/doc/openapi` (if not configured differently) to see the generated OpenAPI specification
-	2. Visit `http://localhost:8080/ui/swagger` (if not configured differently) to explore the web app with swagger-ui
+	2. Visit `http://localhost:8080/ui/swagger` (if not configured differently) to explore the web app with Swagger-UI
 
 
 <!-- CRITICAL REFLECTION -->
