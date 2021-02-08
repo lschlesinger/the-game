@@ -86,23 +86,23 @@ public extension Game {
 // MARK: Game initialization.
 extension Game {
     public mutating func start() throws {
-        // 0.1 Check for at least GameDefaults.minPlayers, at most GameDefaults.maxPlayers players.
+        // Check for at least GameDefaults.minPlayers, at most GameDefaults.maxPlayers players.
         guard (GameDefaults.minPlayers...GameDefaults.maxPlayers).contains(players.count) else {
             throw GameError("Invalid player count: \(players.count).")
         }
 
-        // 0.2 Check for valid state to start a game.
+        // Check for valid state to start a game.
         guard status == .open else {
             throw GameError("Can't start a game in state \(status).")
         }
 
-        // 1. Distribute cards
+        // Distribute cards.
         distributeCards()
 
-        // 2. Randomly pick start player
+        // Randomly pick start player.
         currentPlayerId = players.randomElement()?.value.id
 
-        // 3. Change Status
+        // Change Status.
         status = .running
 
     }
@@ -128,7 +128,7 @@ extension Game {
         currentActions.append(action)
     }
 
-    /// Pass on to the next player in row, if allowed.
+    /// Perform game action of passing on to the next player in row.
     public mutating func pass() throws {
         guard let playerId = currentPlayerId, var player = players[playerId] else {
             throw GameError("Current player couldn't be identified.")
@@ -136,23 +136,24 @@ extension Game {
 
         let sufficientActionsPlayed = (!drawPile.isEmpty && currentActions.count > 1) || (drawPile.isEmpty && currentActions.count > 0)
 
-        // 0. check if game lost because player has not played sufficient actions, but has no options
+        // Check if game lost because player has not played sufficient actions, but has no options.
         if !sufficientActionsPlayed && !player.hasOptions(on: gamePiles) {
             status = .closed
             result = .lost
+            removeGame()
             return
         }
 
-        // 0. check if player performed enough actions (1,2)
+        // Check if player performed enough actions (1,2).
         guard sufficientActionsPlayed else {
             throw GameError("Still your turn dude.")
         }
 
-        // 1. draw new cards (if available in draw pile)
+        // Draw new cards (if available in draw pile).
         player.hand.append(contentsOf: drawPile.draw(currentActions.count))
         players[playerId] = player
 
-        // 2. determine next player with hand count > 0
+        // Determine next player with hand count > 0.
         let orderedPlayerKeys = players.keys.sorted { $0 < $1 }
         var foundCurrentPlayer = false
         var currentKeyIdx = 0
@@ -171,7 +172,7 @@ extension Game {
                 break
             }
             if player.id == currentPlayerId {
-                // if all players have no cards left, this game is won
+                // If no player has cards left, this game is won.
                 if foundCurrentPlayer && player.hand.count == 0 {
                     result = .won
                     status = .closed
@@ -184,32 +185,33 @@ extension Game {
         }
     }
 
+    /// Perform game action of putting a card on a pile.
     private mutating func perform(action: Action) throws {
         var player = players[action.playerId]
 
-        // check if it is valid to put card on desired pile
+        // Check if it is valid to put card on chosen pile.
         guard let gamePileIdx = gamePiles.firstIndex(where: {
             $0.id == action.gamePileId
         }) else {
             throw GameError("Action invalid: Game pile doesn't exist.")
         }
 
-        // depending on order, check if card is valid for pushing to stack
+        // Depending on order, check if card is valid for pushing to stack.
         guard gamePiles[gamePileIdx].validate(action: action) else {
             throw GameError("Action invalid: Your card can't be placed on desired pile.")
         }
 
-        // check if card in player's hand
+        // Check if card in player's hand.
         guard (player)?.validate(action: action) ?? false else {
             throw GameError("Action invalid: You are trying to play a card that isn't in your hand.")
         }
 
-        // perform action ->  update pile
+        // After action is performed, update pile.
         var gamePile = gamePiles[gamePileIdx]
         gamePile.push(card: action.card)
         gamePiles[gamePileIdx] = gamePile
 
-        // perform action ->  update player hand
+        // After action is performed, update player's hand.
         player?.hand.removeAll(where: { $0.number == action.card.number })
         players[action.playerId] = player
     }
