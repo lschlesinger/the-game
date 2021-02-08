@@ -16,13 +16,6 @@ export class ResultModalComponent implements OnInit {
     constructor(private gameService: GameService) {
     }
 
-    handleOk(): void {
-        this.gameService.startGame(this.game.id)
-            .subscribe((game) => {
-                this.modalVisible = false;
-            });
-    }
-
     handleCancel(): void {
         this.modalVisible = false;
     }

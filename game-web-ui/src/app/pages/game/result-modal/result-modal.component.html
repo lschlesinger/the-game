@@ -1,6 +1,5 @@
 <nz-modal [(nzVisible)]="modalVisible"
-          (nzOnCancel)="handleCancel()"
-          (nzOnOk)="handleOk()">
+          (nzOnCancel)="handleCancel()">
     <div *ngIf="game.result === 'lost'"
          class="margin-top--md">
         <img src="assets/images/lost.png"
@@ -33,8 +32,5 @@
                 class="result-modal__button-leave">
             <a routerLink="/"> Leave </a>
         </button>
-        <button nz-button
-                class="result-modal__button-again"
-                (click)="handleOk()">Play again!</button>
     </div>
 </nz-modal>

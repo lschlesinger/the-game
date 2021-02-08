@@ -29,8 +29,7 @@ export class StartComponent implements OnInit, OnDestroy {
     ) {
         this.updateGames();
         this.playerSub = this.playerService.player
-            .subscribe(
-                (player) => {
+            .subscribe((player) => {
                     this.currentPlayer = player;
                 }
             );
