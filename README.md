@@ -54,6 +54,8 @@ By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sampl
   <img src="./Documentation/info-material/Apodini-Problem-Statement.png" alt="Logo" width="600">
 </p>
 
+You can find a step-by-step manual on how to accomplish building a `GameWebService` with Apodini using OAS [here](Documentation/README.md).
+
 ### Built With
 
 * [Apodini](https://github.com/Apodini/Apodini)
