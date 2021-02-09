@@ -19,8 +19,8 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Environmental Mission](#environmental-mission)
-  * [Technical Mission](#technical-mission)
+  * [Motivation](#motivation)
+  * [Technical Background](#technical-background)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
 * [Critical Reflection of the Software](#critical-reflection)
@@ -30,6 +30,8 @@
 
 ## About the Project
 
+The current Corona situation forces us in many cases to limit ourselves to digital contact and digital communication alone. Unfortunately, in times of physical distance and isolation, inviting a large group of people over for a fun evening with card or board games is more a memory of an earlier time than part of our current weekend plan - and we miss that! That is why we came up with the idea to implement our favorite card game as an online game. We can now play together with a group of friends and our families, spread all over the country.
+
 Find more information about the original game [here](http://middys.nsv.de/middys/the-game/).
 This is how our edition looks like:
 <p align="center">
@@ -38,11 +40,14 @@ This is how our edition looks like:
 
 We hope you have fun playing it! Please find acknowledgement as well as the source of the pictures used [here](Documentation/Acknowledgement.md).
 
-### Environmental Mission
+### Motivation
 
-...
+Biodiversity is the basis for functioning ecosystems, on which we humans ourselves ultimately depend. Fortunately, the contribution of nature to a good quality of life is nowadays increasingly valued. Nevertheless, anthropogenic activities are destroying species habitats and thus fueling species extinction unabated.
 
-### Technical Mission
+The idea behind the card design is to raise awareness for [Nature’s Red List of Threatened Species](https://www.iucnredlist.org/about/background-history). 
+The mere sight of the charming representatives of the vulnerable and endangered species should ideally contribute to advocating a more nature-friendly way of life.
+
+### Technical Background
 
 By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sample project tackles the following problem:
 <p align="center">
@@ -68,7 +73,7 @@ By using the [Apodini Framework](https://github.com/Apodini/Apodini), this sampl
 
 * Docker
 * Docker Compose
-* Swagger codegen (`brew install swagger-codegen)
+* Swagger codegen
 
 #### Run
 
@@ -126,6 +131,13 @@ npm run start
 
 ## Critical Reflection of the Software
 
+Browsing the web, people with disabilitites often rely on assistive technologies, such as screen readers, magnification software, text readers, head pointers, and motion or eye trackers to access content. As this project does not include features to support these assistive technologies so far, the software is not barrier-free for all users. 
+In the future, the accessibility of the online game should be guaranteed for all people, no matter where these people come from, what language they speak, what technology they use or what social background they have. That is why we are working to achieve these [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/) in the long term. 
+
+Moreover, the due to the mission that should be transported by the use of pictures, the page weight has potential for optimization. A generated [Page Weight](https://pageweight.imgix.com/) report suggests, that there are 83% potential savings in reducing image sizes. The current page weight of the online games does not only bear the risk of, slow load times, impeded performance, and potentially wasted energy. According to the digital agency [Mightybytes](https://www.mightybytes.com/blog/page-weight-budget-to-speed-up-your-site/) "this can frustrate many users, especially those on older mobile devices or in rural areas with restricted bandwidth". In the future, the online game should bring it's page weight to a minimum and thereby reducing the digital footprint.
+
+In their blog post series [Sustainable Web Design](https://www.mightybytes.com/blog/sustainable-web-design/) Mightybytes introduce sustainable web design principles that generally focus on reducing electricity use but also cover the use of ‘green’ ingredients, such as clean energy-powered web hosting, for example.
+Having in mind that web designers can make a measurable difference to decrease the carbon footprint of the Internet, we should face the challenge of making the online game adhereing to the sustainble web design principles as far as possible in the future.
 
 <!-- LICENSE -->
 
