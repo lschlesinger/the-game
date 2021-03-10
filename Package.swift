@@ -11,7 +11,7 @@ let package = Package(
         .executable(name: "TheGameApodini", targets: ["TheGameApodini"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .branch("feature/oas-tags"))
+        .package(url: "https://github.com/Apodini/Apodini.git", .branch("develop"))
     ],
     targets: [
         .target(
