@@ -8,7 +8,7 @@
   </a>
   <p align="center">
     Swift implementation of the card game "The Game", by Steffen Benndorf using the <a href="https://github.com/Apodini/Apodini">Apodini Framework</a>.
-    The Endangered Natur Edition is based on an environmental education concept, which aims to raise awareness of the current threats to certain species.
+    The Endangered Nature Edition is based on an environmental education concept, which aims to raise awareness of the current threats to certain species.
       </p>
     <br/>
   </p> 
